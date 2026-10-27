@@ -3,16 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>杨宜梁 — AI Product</title>
+<title>杨宜梁</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: #faf8f5;
-    color: #1a1a1a;
-    line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #faf8f5; color: #1a1a1a; line-height: 1.75; -webkit-font-smoothing: antialiased; }
   .container { max-width: 880px; margin: 0 auto; padding: 0 40px; }
   .hero { padding: 100px 0 60px; }
   .hero h1 { font-size: 42px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 20px; line-height: 1.2; }
@@ -21,10 +15,13 @@
   .hero .positioning strong { color: #1a1a1a; font-weight: 600; }
   section { padding: 50px 0; border-top: 1px solid #e8e2d9; }
   section h2 { font-size: 12px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 28px; }
-  .about p { font-size: 16px; max-width: 680px; margin-bottom: 14px; color: #333; }
-  .about .tools { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .edu-item, .work-item { margin-bottom: 20px; }
+  .edu-title, .work-title-line { font-size: 16px; font-weight: 600; color: #1a1a1a; }
+  .edu-meta, .work-meta-line { font-size: 14px; color: #888; margin-top: 2px; }
+  .edu-desc, .work-desc-line { font-size: 14px; color: #555; margin-top: 6px; max-width: 680px; }
+  .tools { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
   .tool-tag { font-size: 12px; padding: 4px 12px; border-radius: 3px; background: #efe9df; color: #5a4a3a; }
-  .work { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid #eee8dd; }
+  .work { margin-bottom: 44px; padding-bottom: 44px; border-bottom: 1px solid #eee8dd; }
   .work:last-child { border-bottom: none; }
   .work-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
   .work-title { font-size: 22px; font-weight: 700; color: #1a1a1a; }
@@ -41,54 +38,82 @@
   .contact-links a { color: #b8764a; text-decoration: none; font-size: 15px; font-weight: 500; }
   .contact-links a:hover { opacity: 0.7; }
   footer { padding: 36px 0; text-align: center; font-size: 12px; color: #bbb; }
-  @media (max-width: 640px) {
-    .container { padding: 0 20px; }
-    .hero { padding: 60px 0 40px; }
-    .hero h1 { font-size: 30px; }
-    .hero .positioning { font-size: 16px; }
-    .work-metrics { flex-direction: column; gap: 12px; }
-  }
+  @media (max-width: 640px) { .container { padding: 0 20px; } .hero { padding: 60px 0 40px; } .hero h1 { font-size: 30px; } .hero .positioning { font-size: 16px; } .work-metrics { flex-direction: column; gap: 12px; } }
 </style>
 </head>
 <body>
 <div class="container">
   <div class="hero">
-    <h1>杨宜梁 <span class="accent">/</span> AI Product</h1>
+    <h1>杨宜梁 <span class="accent">/</span> Yang Yiliang</h1>
     <p class="positioning">
-      我用 AI 作为杠杆，把模糊的业务问题拆成可运行的产品。<br>
-      过去半年，我在<strong>不写传统代码</strong>的前提下独立交付了 4 个被真实业务使用的数据产品——<strong>把区域团队每天 2 小时的手工报表工作压缩到 10 分钟，把散落在 5 个平台的 181 条学习素材重构成可检索、可串联的知识网络</strong>。
+      我用 AI 把想法快速变成可用的产品。<br>
+      过去半年，我在<strong>不写传统代码</strong>的前提下独立交付了 4 个被真实业务使用的数据产品——<strong>把团队每天 2 小时的手工报表压缩到 10 分钟，把散落在 5 个平台的 181 条学习素材重构成可检索、可串联的知识网络</strong>。
     </p>
   </div>
-  <section class="about">
-    <h2>Approach</h2>
-    <p>我的方法不是「学一门技术再做产品」，而是反过来：先找到真实痛点，定义清楚要解决什么问题，然后用 AI 快速验证原型，再根据反馈迭代。</p>
-    <p>这意味着我能在一周内从需求到上线一个可用工具，而不是排期三个月。我相信这个能力在 AI 时代比任何单一技术栈都重要。</p>
+  <section>
+    <h2>Background</h2>
+    <div class="edu-item">
+      <div class="edu-title">上海大学 · 英语笔译 硕士</div>
+      <div class="edu-meta">2022 - 2025</div>
+      <div class="edu-desc">中英双语书面输出能力，能直接对接英文信息源与海外团队。</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-title">郑州大学 · 材料化学 本科</div>
+      <div class="edu-meta">2017 - 2021</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title-line">区域教育科技公司 · 项目运营 / 竞品分析</div>
+      <div class="work-meta-line">2025 - 至今</div>
+      <div class="work-desc">负责区域业务数据分析与竞品跟踪，用 AI 工具链搭建了从数据清洗到可视化发布的自动化系统，替代了原本依赖人工的重复流程。</div>
+    </div>
+    <div class="work-item">
+      <div class="work-title-line">得物 / 百度 / 字节跳动 · HR 相关实习</div>
+      <div class="work-meta-line">三段大厂实习经历</div>
+      <div class="work-desc">接触过海外人才 Mapping、招聘流程协作，对互联网公司的协作方式和产品工作逻辑有一线认知。</div>
+    </div>
     <div class="tools">
+      <span class="tool-tag">中英双语</span>
+      <span class="tool-tag">竞品分析</span>
       <span class="tool-tag">Prompt Engineering</span>
+      <span class="tool-tag">数据口径设计</span>
       <span class="tool-tag">Python / Pandas</span>
       <span class="tool-tag">HTML / CSS / JS</span>
       <span class="tool-tag">ECharts</span>
-      <span class="tool-tag">竞品分析</span>
-      <span class="tool-tag">数据口径设计</span>
-      <span class="tool-tag">中英双语</span>
     </div>
   </section>
   <section>
     <h2>Selected Works</h2>
     <div class="work">
       <div class="work-header">
+        <div class="work-title">个人知识管理系统</div>
+        <div class="work-year">2026</div>
+      </div>
+      <div class="work-role">从 0 到 1 独立设计 · 信息架构 · 构建上线</div>
+      <p class="work-body">这是我自己用的一个知识产品，也是我最完整的一个"产品作品"。之前学习素材散在抖音、小红书、B站、GitHub 五个地方，想找一条历史笔记要翻 10 分钟，而且存了等于没存——看完就忘，知识点之间没有关联。</p>
+      <ul class="work-detail">
+        <li>我设计了一套内容加工流程：原始视频逐字稿（平均 2000 字）→ AI 提炼要点 → 按「结论→分论点→案例」结构化重写 → 原文折叠保留。不是照搬原文，而是把信息重新组织成人能读的结构</li>
+        <li>同一个数据驱动 7 个视图：卡片库（快速检索）、成书阅读（按知识逻辑重排而不是按时间堆）、知识图谱（看知识点之间的关系）、术语表（57 个 AI 概念深读）</li>
+        <li>术语和正文双向跳转：正文里提到任何 AI 术语，自动变成可点击链接，悬停出简介、点击看深度详解</li>
+        <li>纯本地运行，双击 bat 启动，不需要装数据库、不需要前端框架——因为我自己就是非技术用户，我知道怎么设计才能让不懂代码的人也能用</li>
+      </ul>
+      <div class="work-metrics">
+        <div><div class="metric-num">181</div><div class="metric-label">结构化笔记</div></div>
+        <div><div class="metric-num">7</div><div class="metric-label">功能视图</div></div>
+        <div><div class="metric-num">10min → 10s</div><div class="metric-label">检索一条信息</div></div>
+      </div>
+    </div>
+    <div class="work">
+      <div class="work-header">
         <div class="work-title">区域经营数据决策中台</div>
         <div class="work-year">2026</div>
       </div>
-      <div class="work-role">独立产品设计 · 数据管线 · 可视化开发 · 线上发布</div>
-      <p class="work-body">
-        为某教育公司区域业务团队搭建的全链路数据系统。此前业务人员每天从三套业务系统导出 Excel，人工跨表汇总、计算同比、拆分地市与个人维度，再手工做表发群——<strong>单日报表耗时 2-3 小时，且经常因公式引用错误导致数据对不上</strong>。
-      </p>
+      <div class="work-role">业务问题定义 · 数据口径设计 · 自动化管线搭建</div>
+      <p class="work-body">公司业务团队每天要从三套系统导出 Excel，人工跨表汇总、算同比、拆地市和个人维度，再做表发群。整个流程 2-3 小时，而且经常因为公式引用错了，同一个数不同人算出来不一样。</p>
       <ul class="work-detail">
-        <li>用 Python (pandas/openpyxl) 构建自动化管线：三类原始报表自动识别、清洗、按业务规则归并，一条命令完成「加工→页面生成→验收→发布」</li>
-        <li>设计了<strong>同比增长率的特殊场景处理规则</strong>：去年为负（净退费）时百分比必失真，改为「扭亏/减亏/增亏/新增」四类标准化标注，统一经营语义</li>
-        <li>生成自包含单文件 HTML 应用（ECharts 内联，无外部依赖），覆盖省→地市→分部→个人四级下钻</li>
-        <li>基于完成率与同比双维度自动识别经营异常，生成分级诊断卡片与行动建议</li>
+        <li>我把整套流程自动化了：原始表扔进去，自动识别是什么报表、按业务规则清洗加工、生成可视化页面、一键发布线上，全程一条命令</li>
+        <li>最花心思的不是写代码，是<strong>定义数据口径</strong>：比如去年是净退费（负数）的时候，直接算同比百分比是误导的，我设计了「扭亏/减亏/增亏/新增」四类标准化标注，让每个数字在经营上都有明确含义</li>
+        <li>同一个数据给不同角色看不同视图：管理层看全省对比和异常预警，地市负责人看本市核心指标和行动建议，个人看自己的业绩排名</li>
+        <li>系统每天自动识别经营异常（负增长、完成率下滑、新退课），主动推送给需要关注的人，不用人挨个翻表找问题</li>
       </ul>
       <div class="work-metrics">
         <div><div class="metric-num">2-3h → 10min</div><div class="metric-label">单日报表耗时</div></div>
@@ -98,53 +123,23 @@
     </div>
     <div class="work">
       <div class="work-header">
-        <div class="work-title">会战业绩播报自动化系统</div>
+        <div class="work-title">会战业绩播报自动化</div>
         <div class="work-year">2026</div>
       </div>
-      <div class="work-role">自动化流程设计 · 数据可视化 · 消息分发</div>
-      <p class="work-body">
-        会战期间的每日业绩播报自动化。从原始数据到 4 张数据图生成、再到飞书自动推送给管理层，<strong>全链路零人工干预</strong>。
-      </p>
+      <div class="work-role">自动化流程设计 · 消息分发</div>
+      <p class="work-body">业务会战期间，每天早上管理层需要看到昨日战况。之前是人工做完表截图发群，现在全链路自动化：数据跑完自动生成 4 张图（红表、每日走势、去年同期对比、文字播报卡），自动推送到指定人的飞书，<strong>全程零人工</strong>。</p>
       <ul class="work-detail">
-        <li>自动生成红表、每日走势、去年同期对比、文字播报卡 4 张图</li>
-        <li>自动识别异常：当天净退/负增长、完成率下滑、新出现的退课单</li>
-        <li>对接飞书机器人按预设对象与格式推送，业务负责人早上打开手机就看到昨日战况</li>
+        <li>自动标注异常：当天净退、完成率下滑、新出现的退课单，不用人盯着找</li>
+        <li>发出去的文案和格式统一，不会因为换人做就风格飘了</li>
       </ul>
-    </div>
-    <div class="work">
-      <div class="work-header">
-        <div class="work-title">个人知识管理系统</div>
-        <div class="work-year">2026</div>
-      </div>
-      <div class="work-role">独立产品设计 · 信息架构 · 前端开发</div>
-      <p class="work-body">
-        一个纯本地运行的知识产品。从抖音/小红书/B站/GitHub 采集学习内容，经 AI 结构化后渲染为 7 个功能视图——解决了个人素材散落在 5 个平台、找一条信息要翻 10 分钟的问题。
-      </p>
-      <ul class="work-detail">
-        <li>一套数据驱动 7 个视图：卡片库（检索）、成书阅读（按逻辑重排）、知识图谱（关系）、术语表（概念深读）、学习路线、工作流、详情页</li>
-        <li>57 个 AI 术语词条与卡片正文<strong>双向跳转</strong>，提到术语自动渲染为可点击链接</li>
-        <li>设计了三层内容加工流程：原始逐字稿 → AI 提炼要点 → 结构化重写（分节/加粗/表格）→ 原文折叠保留</li>
-        <li>自研轻量 Markdown 渲染器、ECharts 力导向知识图谱、地理编码缓存管线</li>
-      </ul>
-      <div class="work-metrics">
-        <div><div class="metric-num">181</div><div class="metric-label">结构化笔记</div></div>
-        <div><div class="metric-num">7</div><div class="metric-label">功能视图</div></div>
-        <div><div class="metric-num">10min → 10s</div><div class="metric-label">检索单条信息</div></div>
-      </div>
     </div>
     <div class="work">
       <div class="work-header">
         <div class="work-title">公职考情情报聚合</div>
         <div class="work-year">2026</div>
       </div>
-      <div class="work-role">信息架构 · 数据采集 · 竞品分析</div>
-      <p class="work-body">
-        聚合公职考试公开信息源，结构化呈现岗位、竞争比、时间线等情报，与内部业绩数据看板联动，形成「市场情报 + 经营数据」双视图，支撑产品团队决策。
-      </p>
-      <ul class="work-detail">
-        <li>多源信息自动采集与去重，按考试类型、地市、时间维度组织</li>
-        <li>与经营数据看板联动：哪些地市报考热度高 vs 哪些地市业绩落后，一张图看清楚</li>
-      </ul>
+      <div class="work-role">信息架构 · 竞品分析</div>
+      <p class="work-body">把分散在各个公开渠道的考试信息（岗位、竞争比、时间线）聚合成结构化情报，和内部业绩数据放在一起看——哪些地市报考热度高、哪些地市业绩落后，一张图就能做判断。</p>
     </div>
   </section>
   <section>
