@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>杨宜梁 — AI Product</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #faf8f5;
+    color: #2c2c2c;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 40px; }
+  .hero { padding: 120px 0 80px; }
+  .hero h1 { font-size: 48px; font-weight: 700; letter-spacing: -1px; margin-bottom: 16px; }
+  .hero h1 .accent { color: #c8956d; }
+  .hero .tagline { font-size: 20px; color: #666; max-width: 600px; }
+  .hero .meta { margin-top: 32px; font-size: 14px; color: #999; }
+  section { padding: 60px 0; border-top: 1px solid #eae6e0; }
+  section h2 { font-size: 14px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 32px; }
+  .about p { font-size: 17px; max-width: 700px; margin-bottom: 16px; }
+  .about .tools { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-tag { font-size: 13px; padding: 4px 12px; border-radius: 20px; background: #f0ebe3; color: #6b5d4f; }
+  .work { background: #fff; border-radius: 12px; padding: 32px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: transform 0.2s; }
+  .work:hover { transform: translateY(-2px); }
+  .work-title { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .work-meta { font-size: 13px; color: #999; margin-bottom: 16px; }
+  .work-meta span { margin-right: 16px; }
+  .work-desc { font-size: 15px; color: #555; margin-bottom: 16px; }
+  .work-points { font-size: 14px; color: #777; }
+  .work-points li { margin-left: 18px; margin-bottom: 4px; }
+  .contact-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .contact-links a { color: #c8956d; text-decoration: none; font-size: 15px; border-bottom: 1px solid #c8956d; padding-bottom: 2px; }
+  .contact-links a:hover { opacity: 0.7; }
+  footer { padding: 40px 0; text-align: center; font-size: 13px; color: #bbb; border-top: 1px solid #eae6e0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <h1>杨宜梁 <span class="accent">/</span> AI Product</h1>
+    <p class="tagline">用 AI 把复杂的信息变成可交互的产品。从真实痛点出发，独立设计、构建并迭代数据驱动的工具与知识库。</p>
+    <p class="meta">郑州 · 2026</p>
+  </div>
+  <section class="about">
+    <h2>About</h2>
+    <p>我是杨宜梁，英语笔译硕士，目前在一家区域教育科技公司做项目运营与竞品分析。我不写传统代码，但我能用 AI 独立把想法变成可运行的产品——从需求定义、数据建模到前端渲染，一个人闭环。</p>
+    <p>过去半年我用这套方式做了 4 个真实在跑的工具，覆盖知识管理、数据分析、实时看板、情报聚合。我相信产品经理的核心不是写 PRD，而是能把模糊需求拆成可执行的模块，并用 AI 快速验证。</p>
+    <div class="tools">
+      <span class="tool-tag">Prompt Engineering</span>
+      <span class="tool-tag">Python 数据处理</span>
+      <span class="tool-tag">HTML/CSS/JS</span>
+      <span class="tool-tag">ECharts 可视化</span>
+      <span class="tool-tag">竞品分析</span>
+      <span class="tool-tag">双语书面输出</span>
+    </div>
+  </section>
+  <section>
+    <h2>Selected Works</h2>
+    <div class="work">
+      <div class="work-title">个人知识沉淀系统</div>
+      <div class="work-meta"><span>Role: 独立产品设计 + 构建</span><span>2026</span></div>
+      <p class="work-desc">从多平台（抖音/小红书/B站/GitHub）采集学习内容，经 AI 结构化后渲染为 7 个功能页面的本地知识库。解决了个人素材分散、无法检索、无法串联的问题。</p>
+      <ul class="work-points">
+        <li>180+ 条结构化笔记，覆盖 AI 学习、求职方法论、设计资源 3 大领域</li>
+        <li>7 个视图：卡片库 / 成书阅读 / 知识图谱 / 学习路线 / 术语表 / 详情页</li>
+        <li>57 个 AI 术语词条带深度详解，卡片与术语双向跳转</li>
+        <li>纯本地 HTML + Python 构建管线，零数据库依赖</li>
+      </ul>
+    </div>
+    <div class="work">
+      <div class="work-title">区域教育数据分析中台</div>
+      <div class="work-meta"><span>Role: 产品设计 + 数据管线</span><span>2026</span></div>
+      <p class="work-desc">为区域业务团队搭建的每日数据更新中台，从原始 Excel 自动清洗、建模、生成可视化看板并发布线上版本。替代了过去人工拉数、做表、发群的重复流程。</p>
+      <ul class="work-points">
+        <li>每日自动处理多源 Excel 数据，生成单文件 HTML 看板</li>
+        <li>覆盖累计完成率、同比增速、地市排名等核心指标</li>
+        <li>数据口径与业务规则沉淀为可复用脚本，新人接手零培训</li>
+      </ul>
+    </div>
+    <div class="work">
+      <div class="work-title">实时业绩播报看板</div>
+      <div class="work-meta"><span>Role: 产品设计 + 自动化流程</span><span>2026</span></div>
+      <p class="work-desc">会战期间的每日业绩播报自动化系统。从原始数据到图片生成、消息推送全链路脚本化，业务负责人每天早上自动收到昨日战况。</p>
+      <ul class="work-points">
+        <li>每日自动生成 4 张数据图（红表 / 趋势 / 同比 / 播报卡）</li>
+        <li>自动推送到企业内部沟通工具，零人工干预</li>
+        <li>异常数据自动标注（负增长 / 完成率下滑 / 新退课）</li>
+      </ul>
+    </div>
+    <div class="work">
+      <div class="work-title">考情情报聚合系统</div>
+      <div class="work-meta"><span>Role: 产品设计 + 信息聚合</span><span>2026</span></div>
+      <p class="work-desc">聚合公职考试相关的公开信息源，结构化呈现考情、岗位、竞争比等情报，支撑区域产品团队决策。</p>
+      <ul class="work-points">
+        <li>多源信息自动采集与去重</li>
+        <li>按考试类型、时间线、地市维度组织情报</li>
+        <li>与内部数据看板联动，形成"情报 + 业绩"双视图</li>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <h2>Contact</h2>
+    <div class="contact-links">
+      <a href="mailto:yangyiliang@huatu.com">Email</a>
+      <a href="https://github.com/icewater-world">GitHub</a>
+      <a href="#">下载简历 PDF</a>
+    </div>
+  </section>
+</div>
+<footer>© 2026 杨宜梁 · Built with AI</footer>
+</body>
+</html>
