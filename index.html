@@ -3,56 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>杨宜梁</title>
+<title>杨宜梁 — AI Product Builder</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif; background: #ffffff; color: #1a1a1a; line-height: 1.8; -webkit-font-smoothing: antialiased; font-weight: 300; }
-  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
-  .hero { padding: 120px 0 80px; }
-  .hero h1 { font-size: 36px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 24px; line-height: 1.3; }
-  .hero .positioning { font-size: 17px; color: #333; max-width: 600px; line-height: 1.9; font-weight: 400; }
+  body { font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif; background: #ffffff; color: #1a1a1a; line-height: 1.85; -webkit-font-smoothing: antialiased; font-weight: 300; }
+  .container { max-width: 780px; margin: 0 auto; padding: 0 40px; }
+  .hero { padding: 140px 0 90px; }
+  .hero .eyebrow { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 28px; }
+  .hero h1 { font-size: 42px; font-weight: 700; letter-spacing: -1px; margin-bottom: 32px; line-height: 1.2; }
+  .hero .positioning { font-size: 18px; color: #333; max-width: 640px; line-height: 1.9; font-weight: 400; }
   .hero .positioning strong { font-weight: 600; color: #111; }
-  section { padding: 56px 0; border-top: 1px solid #eee; }
-  section h2 { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 36px; }
-  .edu-item, .work-item { margin-bottom: 24px; }
-  .edu-title, .work-title-line { font-size: 15px; font-weight: 600; color: #111; }
-  .edu-meta, .work-meta-line { font-size: 13px; color: #999; margin-top: 2px; }
-  .edu-desc, .work-desc-line { font-size: 14px; color: #555; margin-top: 6px; max-width: 640px; font-weight: 300; }
-  .tools { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .tool-tag { font-size: 12px; padding: 3px 10px; border: 1px solid #ddd; border-radius: 2px; color: #666; font-weight: 400; }
-  .work { margin-bottom: 56px; }
+  section { padding: 64px 0; border-top: 1px solid #f0f0f0; }
+  section h2 { font-size: 11px; font-weight: 600; color: #bbb; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 40px; }
+  .edu-item, .work-item { margin-bottom: 28px; }
+  .edu-title, .work-title-line { font-size: 16px; font-weight: 600; color: #111; }
+  .edu-meta, .work-meta-line { font-size: 13px; color: #999; margin-top: 3px; letter-spacing: 0.5px; }
+  .edu-desc, .work-desc-line { font-size: 14px; color: #555; margin-top: 8px; max-width: 640px; font-weight: 300; line-height: 1.8; }
+  .tools { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .tool-tag { font-size: 12px; padding: 4px 12px; border: 1px solid #e5e5e5; border-radius: 1px; color: #555; font-weight: 400; background: #fafafa; }
+  .work { margin-bottom: 72px; }
   .work:last-child { margin-bottom: 0; }
-  .work-header { margin-bottom: 4px; }
-  .work-title { font-size: 20px; font-weight: 700; color: #111; letter-spacing: -0.2px; }
-  .work-year { font-size: 13px; color: #aaa; font-weight: 400; margin-left: 12px; }
-  .work-role { font-size: 13px; color: #888; margin-bottom: 20px; font-weight: 400; }
-  .work-body { font-size: 14.5px; color: #333; margin-bottom: 16px; line-height: 1.9; font-weight: 400; }
+  .work-header { margin-bottom: 6px; }
+  .work-title { font-size: 24px; font-weight: 700; color: #111; letter-spacing: -0.3px; }
+  .work-year { font-size: 13px; color: #bbb; font-weight: 400; margin-left: 14px; }
+  .work-role { font-size: 13px; color: #999; margin-bottom: 28px; font-weight: 400; }
+  .work-body { font-size: 15px; color: #333; margin-bottom: 24px; line-height: 1.95; font-weight: 400; }
   .work-body strong { font-weight: 600; color: #111; }
-  .work-detail { font-size: 14px; color: #555; line-height: 1.9; }
-  .work-detail li { margin-left: 20px; margin-bottom: 8px; font-weight: 300; }
+  .block-label { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 2px; margin: 28px 0 14px; }
+  .work-detail { font-size: 14px; color: #444; line-height: 1.9; }
+  .work-detail li { margin-left: 20px; margin-bottom: 12px; font-weight: 300; }
   .work-detail li strong { color: #111; font-weight: 600; }
-  .work-metrics { display: flex; gap: 40px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
-  .metric-num { font-size: 18px; font-weight: 700; color: #111; }
-  .metric-label { font-size: 11px; color: #999; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
-  .contact-links { display: flex; gap: 32px; flex-wrap: wrap; }
-  .contact-links a { color: #111; text-decoration: none; font-size: 14px; font-weight: 500; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+  .work-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #f0f0f0; }
+  .metric-num { font-size: 20px; font-weight: 700; color: #111; letter-spacing: -0.3px; }
+  .metric-label { font-size: 11px; color: #999; margin-top: 6px; letter-spacing: 1px; }
+  .contact-links { display: flex; gap: 40px; flex-wrap: wrap; }
+  .contact-links a { color: #111; text-decoration: none; font-size: 14px; font-weight: 500; border-bottom: 1px solid #ccc; padding-bottom: 3px; }
   .contact-links a:hover { border-bottom-color: #111; }
-  footer { padding: 48px 0; text-align: center; font-size: 11px; color: #ccc; border-top: 1px solid #eee; }
-  @media (max-width: 640px) { .container { padding: 0 20px; } .hero { padding: 80px 0 50px; } .hero h1 { font-size: 28px; } .hero .positioning { font-size: 15px; } .work-metrics { flex-direction: column; gap: 16px; } }
+  footer { padding: 56px 0; text-align: center; font-size: 11px; color: #ccc; border-top: 1px solid #f0f0f0; }
+  @media (max-width: 640px) { .container { padding: 0 24px; } .hero { padding: 90px 0 60px; } .hero h1 { font-size: 30px; } .hero .positioning { font-size: 16px; } .work-metrics { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
 </style>
 </head>
 <body>
 <div class="container">
   <div class="hero">
+    <div class="eyebrow">AI Product Builder</div>
     <h1>杨宜梁</h1>
-    <p class="positioning">我用 AI 把想法快速变成可用的产品。<br><br>过去半年，我在不写传统代码的前提下独立交付了 4 个被真实业务使用的数据产品——把团队每天 2 小时的手工报表压缩到 10 分钟，把散落在 5 个平台的 181 条学习素材重构成可检索、可串联的知识网络。</p>
+    <p class="positioning">我用 AI 把业务痛点快速变成可用的数据产品。<br><br>过去半年，我在不依赖传统前端开发的前提下，独立交付了 4 个被真实业务每天使用的数据产品——把团队每天 2-3 小时的手工报表压缩到 10 分钟自动出图，把散落在 5 个平台的学习素材重构成可检索、可串联的知识网络，把 112 个学习中心的业绩会战从"下午才能发数据"变成"上午 10 点前飞书自动推送"。</p>
   </div>
   <section>
     <h2>Background</h2>
     <div class="edu-item">
       <div class="edu-title">上海大学 · 英语笔译 硕士</div>
       <div class="edu-meta">2022 — 2025</div>
-      <div class="edu-desc">中英双语书面输出，能直接阅读英文技术文档、对标海外产品、对接英文信息源。</div>
+      <div class="edu-desc">中英双语书面输出能力，能直接阅读英文技术文档、对标海外产品设计、对接英文信息源，做竞品分析时能直接啃英文原始资料而不是靠二手翻译。</div>
     </div>
     <div class="edu-item">
       <div class="edu-title">郑州大学 · 材料化学 本科</div>
@@ -61,7 +64,7 @@
     <div class="work-item">
       <div class="work-title-line">区域教育科技公司 · 项目运营 / 竞品分析</div>
       <div class="work-meta-line">2025 — 至今</div>
-      <div class="work-desc">负责区域业务数据分析与竞品跟踪。日常工作不是"做表"，而是把模糊的业务问题定义清楚——数据口径怎么算、异常怎么识别、不同角色该看什么——然后用 AI 工具链把整个流程自动化。</div>
+      <div class="work-desc">负责区域业务数据分析与竞品跟踪。日常工作不是"做表"，而是把模糊的业务问题定义清楚——数据口径怎么算、异常怎么识别、不同角色该看什么指标、规则怎么沉淀成自动化——然后用 AI 工具链把整个流程端到端跑通。</div>
     </div>
     <div class="work-item">
       <div class="work-title-line">得物 / 百度 / 字节跳动 · HR 相关实习</div>
@@ -76,20 +79,22 @@
       <span class="tool-tag">Python / Pandas</span>
       <span class="tool-tag">HTML / CSS / JS</span>
       <span class="tool-tag">ECharts</span>
+      <span class="tool-tag">Excel 自动化</span>
     </div>
   </section>
   <section>
     <h2>Selected Works</h2>
     <div class="work">
       <div class="work-header"><div class="work-title">个人知识管理系统<span class="work-year">2026</span></div></div>
-      <div class="work-role">从 0 到 1 独立设计 · 信息架构 · 前端构建</div>
-      <p class="work-body">这是我自己用的一个知识产品，也是我最完整的一个"产品作品"。之前学习素材散在抖音、小红书、B站、GitHub 五个地方，想找一条历史笔记要翻 10 分钟，而且存了等于没存——视频逐字稿动辄几千字看完就忘，截图和链接存了等于没存，知识点之间完全没有关联。</p>
+      <div class="work-role">从 0 到 1 独立设计 · 信息架构 · 内容加工流程 · 前端构建</div>
+      <p class="work-body">这是我自己每天在用的知识产品，也是我最完整的一个"产品作品"。之前学习素材散在抖音、小红书、B站、GitHub 五个地方，想找一条历史笔记要翻 10 分钟，而且存了等于没存——视频逐字稿动辄几千字看完就忘，截图和链接存了等于没存，知识点之间完全没有关联。</p>
+      <div class="block-label">我做了什么</div>
       <ul class="work-detail">
-        <li><strong>内容加工流程设计</strong>：原始视频逐字稿（平均 2000 字）→ AI 提炼一句话摘要 + 4-6 条要点 → 按「核心结论→分论点→案例→建议」结构化重写 → 原文折叠保留。不是照搬原文，而是把信息重新组织成人能读的结构，重要句加粗、能列表就列表、能对比就做表格。</li>
-        <li><strong>一套数据驱动 7 个视图</strong>：卡片库（快速检索 + 分类筛选 + 关键词搜索）、成书阅读（把几十篇帖子按知识逻辑重排成"第一章第二章"，而不是按时间堆）、知识图谱（ECharts 力导向图，看知识点之间的关系）、术语表（57 个 AI 概念深读）、学习路线、工作流、详情页。</li>
-        <li><strong>知识之间的串联</strong>：术语和正文双向跳转——正文里提到任何 AI 术语，自动渲染成可点击链接，鼠标悬停出简介、点击跳深度详解页。卡片之间用 dedup 标注重复知识点，成书和图谱自动去重。</li>
-        <li><strong>非技术用户视角</strong>：纯本地运行，双击 bat 启动，不需要数据库、不需要前端框架。因为我自己就是非技术用户，我知道怎么设计才能让不懂代码的人也能用——所有数据集中在一个 JSON 文件，改数据后跑一个构建脚本就行。</li>
-        <li><strong>解决本地浏览器安全限制</strong>：file:// 协议下浏览器不允许 fetch 本地 JSON，我把数据序列化成 JS 文件通过 script 标签加载，同时保留本地 HTTP 服务作为推荐入口。</li>
+        <li><strong>设计了一套"原文 → 结构化 → 可检索"的内容加工流程</strong>：原始视频逐字稿（平均 2000 字）→ AI 提炼一句话核心结论 + 4-6 条干货要点 → 按「开场背景→分论点1/2/3→案例→行动建议」结构化重写 → 重要句加粗、能并列的做 bullet、能对比的做表格、能流程的做步骤 → 原文折叠保留在末尾。不是照搬原文，而是把信息重新组织成人能读的结构。</li>
+        <li><strong>一套 JSON 数据驱动 7 个视图</strong>：卡片库（快速检索 + 分类筛选 + 关键词搜索）、成书阅读（把几十篇帖子按知识逻辑重排成"第一章第二章"而不是按时间堆）、知识图谱（ECharts 力导向图看知识点之间的关系）、术语表（57 个 AI 概念深读）、学习路线、工作流库、详情页。改一个 JSON 所有视图同步更新。</li>
+        <li><strong>术语和正文双向跳转串联</strong>：正文里提到任何 AI 术语，自动渲染成可点击链接，鼠标悬停出一句话简介、点击跳深度详解页；术语页里也能看到"哪些卡片提到了这个词"。卡片之间用 dedup 标注重复知识点，成书和图谱自动去重，形成一张网而不是一堆孤岛。</li>
+        <li><strong>站在非技术用户视角做产品</strong>：纯本地运行，双击 bat 启动，不需要数据库、不需要 npm、不需要前端框架。所有数据集中在一个 JSON，改数据后跑一个 Python 构建脚本就行。因为我自己就是非技术用户，我知道怎么设计才能让不懂代码的人也敢用。</li>
+        <li><strong>解决了本地浏览器的安全限制</strong>：file:// 协议下浏览器不允许 fetch 本地 JSON，我把数据序列化成 JS 文件通过 script 标签加载，同时保留本地 HTTP 服务作为推荐入口，两种打开方式都能用。</li>
       </ul>
       <div class="work-metrics">
         <div><div class="metric-num">181</div><div class="metric-label">结构化笔记</div></div>
@@ -100,14 +105,16 @@
     </div>
     <div class="work">
       <div class="work-header"><div class="work-title">区域经营数据决策中台<span class="work-year">2026</span></div></div>
-      <div class="work-role">业务问题定义 · 数据口径设计 · 自动化管线搭建</div>
+      <div class="work-role">业务问题定义 · 数据口径设计 · 自动化管线 · 前端可视化</div>
       <p class="work-body">公司业务团队每天要从三套系统导出 Excel（实收业绩、不可退业绩、产品明细），人工跨表汇总、算同比、拆地市和个人维度，再做表发群。整个流程 2-3 小时，而且经常因为公式引用错了，同一个数不同人算出来不一样。历史数据散在各周期文件里，管理层想下钻看某个地市某个分部的情况，得重新拉表。</p>
+      <div class="block-label">我做了什么</div>
       <ul class="work-detail">
-        <li><strong>端到端自动化管线</strong>：原始表扔进去，自动识别是什么报表（按表头列数和内容判断，不依赖文件名）、按业务日期归位到对应目录、按规则清洗加工、生成可视化页面、一键发布线上，全程一条命令。</li>
-        <li><strong>数据口径是最花心思的部分</strong>：比如去年是净退费（负数）的时候，直接算同比百分比是误导的（去年退 1 万、今年收 5 万，算出来 +600%，业务上根本没法解读）。我设计了一套标准化规则：去年正就正常算百分比，去年为零标"新增"，去年负就改成"扭亏/减亏/增亏"三个方向文字标注，让每个数字在经营上都有明确含义。</li>
-        <li><strong>多角色差异化视图</strong>：同一个数据给不同角色看不同东西——管理层看全省 19 个主体横向对比和异常预警，地市负责人看本市核心指标和行动建议，个人看自己的业绩排名。不是做一个大表所有人自己找。</li>
-        <li><strong>经营异常自动识别</strong>：基于完成率和同比双维度，把经营主体分成"严重落后/节奏偏慢/正常"三级，自动生成带具体行动建议的诊断卡片。点异常主体直接跳到下钻视图。</li>
-        <li><strong>多源异构表兼容</strong>：新到的学历事业部表只有 6 列关键信息，主表 46 列，而且列名完全不一样。我按表头名建映射而不是按固定列位置灌数，缺列安全留空，上游表结构变了脚本不用改。</li>
+        <li><strong>搭了一条端到端自动化管线</strong>：原始表扔进下载目录，脚本自动识别是什么报表（按表头列数和内容判断，不依赖文件名——文件名是系统导出的时间戳，根本不能信）、按表内业务日期归位到对应月份夹、按规则清洗加工、生成单文件 HTML、一键发布线上。全程一条命令，10 分钟跑完。</li>
+        <li><strong>设计了一套不会误导人的同比口径体系</strong>：去年是净退费（负数）的时候，直接算百分比是错的——去年退 1 万、今年收 5 万，算出来 +600%，业务上根本没法解读。我设计了标准化规则：去年正就正常算百分比，去年为零标"新增"，去年负就改成"扭亏/减亏/增亏"三个方向文字标注。每个数字在经营上都有明确含义，不再出现无法解释的怪数。</li>
+        <li><strong>给不同角色做不同视图，而不是一个大表所有人自己找</strong>：管理层看全省 19 个主体横向对比 + 异常预警条，地市负责人看本市核心指标 + 行动建议，个人看自己的业绩排名。还有校长速览移动端精简视图，一屏看完该看的。</li>
+        <li><strong>经营异常自动识别</strong>：基于完成率和同比双维度，把经营主体分成"严重落后 / 节奏偏慢 / 正常"三级，自动生成带具体行动建议的诊断卡片。点异常主体直接跳到下钻视图，不用管理层自己一个个翻。</li>
+        <li><strong>多源异构表兼容</strong>：新到的学历事业部表只有 6 列关键信息，主表 46 列，而且列名完全不一样（叫"收款/退款金额"不叫"杂费金额"）。我按表头名建映射而不是按固定列位置灌数，缺列安全留空，上游表结构变了脚本不用改。</li>
+        <li><strong>四级下钻 + 历史回看</strong>：省 → 地市 → 121 个报名分部 → 到人，一条纵向分析链路。每天自动留存全省核心指标快照，任意历史日期的经营结论都能回查。</li>
       </ul>
       <div class="work-metrics">
         <div><div class="metric-num">2-3h → 10min</div><div class="metric-label">日报耗时</div></div>
@@ -118,17 +125,21 @@
     </div>
     <div class="work">
       <div class="work-header"><div class="work-title">会战业绩播报自动化<span class="work-year">2026</span></div></div>
-      <div class="work-role">自动化流程设计 · 可视化 · IM 推送</div>
-      <p class="work-body">10 月业绩会战期间，地市校长和管理层每天早上需要看到昨日战况。之前是人工做完表截图发微信群，一次 1.5-2 小时，经常到下午才发出去，赶不上早会和晚间冲刺节奏。</p>
+      <div class="work-role">自动化流程设计 · 数据规则引擎 · 可视化 · 飞书 IM 推送</div>
+      <p class="work-body">10 月业绩会战期间，19 个地市校长和管理层每天早上需要看到昨日战况。之前是人工做完表截图发微信群，一次 1.5-2 小时，经常到下午才发出去，赶不上早会和晚间冲刺节奏。而且数据里混着非会战产品的大额 VIP 单，会把个别地市完成率抬高几倍，人工剔单又容易错剔正常的高端班。</p>
+      <div class="block-label">我做了什么</div>
       <ul class="work-detail">
-        <li><strong>全链路零人工</strong>：数据跑完自动生成 4 张图（红表、每日走势、去年同期对比、文字播报卡），自动推送到指定人的飞书，上午 10 点前就能收到。</li>
-        <li><strong>规则驱动的剔单和激励计算</strong>：会战期间有非会战产品的大额单混进来会扭曲数据，我设计了三要素剔单规则（同时满足三个条件才剔），正常高端班保留、异常单人工确认后再沉淀规则。激励金额按规则自动算——达标解锁固定金额、超基准每满 1 万奖 500，每天精确到档位，不用人工估。</li>
-        <li><strong>可视化即政策说明</strong>：图上直接印会战规则（处罚措施、奖励占比），校长看图就懂政策，不用再单独解释。完成率列金黄底高亮、未达标灰字弱化，红涨绿跌，一屏看明白谁好谁差。</li>
-        <li><strong>双通道推送</strong>：先推给自己核对，确认无误后再一键转发给领导，避免错图发出去。图文按序排列，留痕可追溯。</li>
+        <li><strong>全链路零人工播报</strong>：数据跑完自动生成 4 张图（红表、本月每日走势、去年同期对比、文字播报卡），自动推送到飞书，上午 10 点前校长和领导就能收到。原来 1.5-2 小时的人工活变成一条命令。</li>
+        <li><strong>规则驱动的剔单引擎</strong>：非会战产品大单混进来会扭曲数据，我设计了三要素剔单规则（商品事业部=国央企 ∧ 名称含VIP ∧ |杂费|≥2万，三个条件同时满足才剔），正常高端班（直通车、书院培优）保留，异常单单列给业务确认后再沉淀规则。历史共剔 9 笔，零错剔正常班。</li>
+        <li><strong>激励金额自动算到档位</strong>：会战政策是"达标解锁固定激励、超基准每满 1 万奖 500、未达标罚 50%"。我写了规则每天精确算出每个学习中心能拿多少钱，不用人工估——达标者金黄高亮、未达标灰字（同时是罚的基数），校长看图就知道自己能不能拿奖。</li>
+        <li><strong>可视化即政策说明</strong>：图上直接印会战规则（处罚措施、奖励占比、超基准激励系数），校长看图就懂政策，不用再单独解释。完成率列金黄底视觉最强、红涨绿跌，一屏看明白谁好谁差。</li>
+        <li><strong>双通道推送防错</strong>：先推给自己核对，确认无误后再一键转发给领导，避免错图发出去。图文按序排列，留痕可追溯。</li>
+        <li><strong>攻克了 Excel 自动化的坑</strong>：模板里有 VLOOKUP 公式列，openpyxl 只写值不算公式，我用 win32com 无头打开 Excel 触发 CalculateFull 再回读结果；公式列号 8/3 写死，不能用正则批量替换数字（会把 VLOOKUP 列号误换成行号导致 #REF!）。</li>
       </ul>
       <div class="work-metrics">
         <div><div class="metric-num">1.5h → 10min</div><div class="metric-label">播报耗时</div></div>
-        <div><div class="metric-num">19 + 112</div><div class="metric-label">地市 + 学习中心</div></div>
+        <div><div class="metric-num">19+112</div><div class="metric-label">地市+学习中心</div></div>
+        <div><div class="metric-num">9 笔</div><div class="metric-label">VIP大单自动剔</div></div>
         <div><div class="metric-num">0</div><div class="metric-label">人工干预</div></div>
       </div>
     </div>
