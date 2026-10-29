@@ -4,123 +4,199 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>杨宜梁 · 项目作品集</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230D1117'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='700' fill='%233D9BE9' text-anchor='middle' font-family='sans-serif'%3EY%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232563EB'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle' font-family='sans-serif'%3EY%3C/text%3E%3C/svg%3E">
 <style>
 :root{
-  --bg:#0D1117; --surface:#151B23; --surface2:#1B222D; --line:#262E3B;
-  --text:#E7ECF2; --muted:#98A5B6; --faint:#6B7889;
-  --accent:#3D9BE9; --accent-soft:rgba(61,155,233,.12);
-  --teal:#46C2AE; --teal-soft:rgba(70,194,174,.12);
-  --amber:#E0A458;
-  --radius:12px;
+  --paper:#ffffff; --soft:#f6f8fa; --line:#e7ebef;
+  --ink:#101316; --body:#2c3136; --muted:#5f6871; --faint:#8b959e;
+  --accent:#2563EB; --btn:#1D4ED8; --wash:#ebf0fd;
+  --radius:16px;
+  --ease:cubic-bezier(.22,1,.36,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,sans-serif;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
+body{background:var(--paper);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC","Noto Sans SC",system-ui,sans-serif;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+@media(max-width:640px){.wrap{padding:0 24px}}
 
 /* ===== 导航 ===== */
-nav{position:sticky;top:0;z-index:50;background:rgba(13,17,23,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav-in{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1080px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{font-weight:700;font-size:17px;letter-spacing:.5px}
 .brand span{color:var(--accent)}
-.nav-links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:14px;color:var(--muted)}
 .nav-links a{transition:color .2s}
-.nav-links a:hover{color:var(--text)}
-@media(max-width:640px){.nav-links{display:none}}
+.nav-links a:hover{color:var(--ink)}
+.btn-print{border:1px solid var(--line);background:#fff;color:var(--muted);font-size:13px;padding:7px 14px;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
+.btn-print:hover{color:var(--ink);border-color:var(--faint)}
+@media(max-width:760px){.nav-links a{display:none}}
+@media(max-width:760px){.nav-links{gap:12px}.btn-print{margin-left:4px}}
 
 /* ===== Hero ===== */
-header{padding:88px 0 56px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
-header::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;opacity:.18;mask-image:radial-gradient(ellipse 80% 60% at 30% 0%,#000 30%,transparent 75%)}
-.hero{position:relative}
-.hero .kicker{color:var(--accent);font-size:14px;font-weight:600;letter-spacing:1px;margin-bottom:18px}
-.hero h1{font-size:clamp(30px,5vw,48px);font-weight:800;line-height:1.25;margin-bottom:18px}
-.hero .sub{color:var(--muted);font-size:clamp(15px,2vw,18px);max-width:620px;margin-bottom:36px}
-.stats{display:flex;flex-wrap:wrap;gap:14px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 22px;min-width:128px}
-.stat b{display:block;font-size:26px;font-weight:800;color:var(--text)}
-.stat i{font-style:normal;font-size:13px;color:var(--muted)}
+header{padding-block:80px 48px;border-bottom:1px solid var(--line)}
+.hero .kicker{color:var(--accent);font-size:14px;font-weight:600;letter-spacing:1px;margin-bottom:20px}
+.hero h1{font-size:clamp(30px,4.5vw,44px);font-weight:700;line-height:1.3;text-wrap:balance;max-width:680px}
+.hero .sub{color:var(--muted);font-size:16px;max-width:680px;margin-top:20px;text-wrap:pretty}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn-solid{display:inline-flex;align-items:center;background:var(--btn);color:#fff;font-size:14px;font-weight:600;padding:11px 22px;border-radius:10px;transition:background .3s var(--ease),transform .3s var(--ease)}
+.btn-solid:hover{background:var(--accent);transform:translateY(-1px)}
+.btn-line{display:inline-flex;align-items:center;border:1px solid var(--line);color:var(--ink);font-size:14px;font-weight:600;padding:11px 22px;border-radius:10px;transition:border-color .3s var(--ease)}
+.btn-line:hover{border-color:var(--faint)}
 
 /* ===== 通用区块 ===== */
-section{padding:60px 0}
-.sec-head{margin-bottom:30px}
+section{padding:56px 0}
+.sec-head{margin-bottom:32px}
 .sec-head h2{font-size:24px;font-weight:700;margin-bottom:8px}
-.sec-head p{color:var(--muted);font-size:14px;max-width:640px}
+.sec-head p{color:var(--muted);font-size:14px;max-width:680px}
 
-/* ===== 筛选 ===== */
-.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
-.chip{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:8px 16px;border-radius:999px;font-size:14px;cursor:pointer;transition:all .2s;user-select:none}
-.chip:hover{color:var(--text);border-color:var(--faint)}
-.chip.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+/* ===== 核心项目：三排通栏横版大卡 ===== */
+.feature-list{display:grid;gap:24px}
+.feature{display:grid;grid-template-columns:1.12fr .88fr;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;transition:transform .32s var(--ease),box-shadow .32s var(--ease)}
+.feature:hover{transform:translateY(-4px);box-shadow:0 18px 42px -22px rgba(37,99,235,.32)}
+.feature.flip{grid-template-columns:.88fr 1.12fr}
+.feature .shot{background:var(--soft);position:relative;min-height:340px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);padding:24px}
+.feature.flip .shot{border-right:none;border-left:1px solid var(--line)}
+.browser{width:100%;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 12px 30px -18px rgba(16,30,50,.25)}
+.browser .bar{display:flex;gap:6px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);background:#fafbfc}
+.browser .dot{width:8px;height:8px;border-radius:50%;background:#d7dde3}
+.browser .addr{margin-left:10px;flex:1;height:16px;border-radius:6px;background:var(--soft)}
+.browser .stage{height:250px;overflow:hidden;position:relative;padding:14px 14px 0}
+.browser .scroll-inner{display:grid;gap:10px;animation:mockScroll 9s linear infinite}
+@keyframes mockScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.mock-row{height:24px;border-radius:8px;background:#eef2f6}
+.mock-row.w60{width:60%}.mock-row.w80{width:80%}.mock-row.w40{width:40%}
+.mock-chart{height:88px;border-radius:10px;background:var(--wash);display:flex;align-items:flex-end;gap:8px;padding:12px}
+.mock-chart i{flex:1;background:var(--accent);opacity:.18;border-radius:4px 4px 0 0}
+.mock-chart i:nth-child(1){height:44%}
+.mock-chart i:nth-child(2){height:68%}
+.mock-chart i:nth-child(3){height:52%}
+.mock-chart i:nth-child(4){height:82%}
+.mock-chart i:nth-child(5){height:60%}
+.mock-caption{position:absolute;bottom:10px;left:14px;font-size:11px;color:var(--faint)}
+@media (prefers-reduced-motion: reduce){.browser .scroll-inner{animation:none}}
+.feature .info{padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
+.feature .tag{display:inline-flex;align-self:flex-start;font-size:12px;color:var(--accent);background:var(--wash);border-radius:999px;padding:4px 12px;margin-bottom:16px}
+.feature h3{font-size:22px;font-weight:700;margin-bottom:10px;line-height:1.35}
+.feature .desc{font-size:14px;color:var(--muted)}
+.feature ul.points{display:grid;gap:14px;margin-top:20px;list-style:none}
+.feature .point b{display:block;font-size:14.5px;margin-bottom:2px}
+.feature .point span{font-size:13.5px;color:var(--muted)}
+.feature .tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tool{font-size:12px;color:var(--faint);border:1px solid var(--line);padding:3px 10px;border-radius:8px}
+.feature .go{margin-top:22px;color:var(--accent);font-weight:600;font-size:14px;display:inline-flex;gap:6px;align-items:center}
 
-/* ===== 项目网格 ===== */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px;cursor:pointer;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--faint);transform:translateY(-2px)}
-.card.hide{display:none}
-.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
-.card h3{font-size:17px;font-weight:700;line-height:1.4}
-.tag{flex-shrink:0;font-size:12px;padding:3px 10px;border-radius:999px;font-weight:600}
-.tag.core{background:var(--accent-soft);color:var(--accent)}
-.tag.work{background:var(--surface2);color:var(--muted)}
-.tag.personal{background:var(--teal-soft);color:var(--teal)}
-.card .one{color:var(--muted);font-size:14px;margin-bottom:12px}
-.card .points{font-size:13.5px;color:var(--faint);list-style:none;display:none}
-.card.open .points{display:block;margin-top:10px}
-.card .points li{padding-left:16px;position:relative;margin-bottom:6px}
-.card .points li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.card .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.tool{font-size:12px;color:var(--faint);border:1px solid var(--line);padding:3px 9px;border-radius:6px}
-.more{display:inline-block;margin-top:12px;font-size:13px;color:var(--accent)}
-.card.open .more::after{content:" 收起"}
-.card:not(.open) .more::after{content:" 展开详情"}
+/* 附项目录 */
+.p-more{margin-top:24px;border-top:1px solid var(--line);padding-top:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px 24px}
+.p-more .row{font-size:13.5px;color:var(--muted);display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+.p-more .row b{color:var(--ink);font-weight:600;white-space:nowrap}
 
-/* ===== 关于 ===== */
+/* ===== 工作方法 ===== */
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.m-step{border-top:2px solid var(--accent);padding-top:16px}
+.m-step b{display:block;font-size:20px;font-weight:700;color:var(--accent);margin-bottom:6px;font-variant-numeric:tabular-nums}
+.m-step h5{font-size:15px;font-weight:700;margin-bottom:6px}
+.m-step p{font-size:13px;color:var(--muted)}
+.disclosure{margin-top:24px;background:var(--soft);border-radius:14px;padding:16px 20px;font-size:13px;color:var(--muted)}
+
+/* ===== 关于我 ===== */
+.about-me{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px}
+.about-me p{color:var(--body);font-size:15px;max-width:760px}
+.about-me p b{color:var(--ink)}
+.lines{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.line-pill{flex:1 1 220px;background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.line-pill b{display:block;color:var(--accent);font-size:14px;margin-bottom:4px}
+.line-pill span{color:var(--muted);font-size:13.5px}
+
+/* ===== 时间轴 ===== */
+.timeline{position:relative;margin-top:8px}
+.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl-item{position:relative;padding:0 0 22px 34px}
+.tl-item::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:#fff;border:2px solid var(--accent);box-sizing:border-box}
+.tl-time{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums;margin-bottom:3px}
+.tl-title{font-size:15.5px;font-weight:700}
+.tl-sub{color:var(--muted);font-size:13.5px;margin-top:3px;max-width:760px}
+
+/* ===== 能力面板 ===== */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px}
 .panel h3{font-size:16px;margin-bottom:12px}
 .panel ul{list-style:none}
 .panel li{color:var(--muted);font-size:14px;padding:6px 0 6px 18px;position:relative}
 .panel li::before{content:"—";position:absolute;left:0;color:var(--faint)}
 
-footer{border-top:1px solid var(--line);padding:36px 0;color:var(--faint);font-size:13px;text-align:center}
-.todo{color:var(--amber);font-size:12px}
+footer{border-top:1px solid var(--line);padding:40px 0;color:var(--faint);font-size:13px;text-align:center}
+footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 
-/* ===== 关于我 / 简介 ===== */
-.about-me{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px 28px}
-.about-me p{color:var(--muted);font-size:15px;max-width:760px}
-.about-me p b{color:var(--text)}
-.lines{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-.line-pill{flex:1 1 220px;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.line-pill b{display:block;color:var(--accent);font-size:14px;margin-bottom:4px}
-.line-pill span{color:var(--muted);font-size:13.5px}
+/* ===== 滚动揭示 ===== */
+.rv{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
 
-/* ===== 职业时间轴 ===== */
-.timeline{position:relative;padding-left:0}
-.timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
-.tl-item{position:relative;padding:0 0 22px 34px}
-.tl-item::before{content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);box-sizing:border-box}
-.tl-item.lead::before{border-color:var(--teal)}
-.tl-time{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums;margin-bottom:3px}
-.tl-title{font-size:15.5px;font-weight:700;color:var(--text)}
-.tl-sub{color:var(--muted);font-size:13.5px;margin-top:3px;max-width:720px}
-.tl-badge{display:inline-block;margin-top:6px;font-size:12px;color:var(--amber);background:rgba(224,164,88,.1);border-radius:999px;padding:2px 10px}
+/* ===== 详情视图 ===== */
+.detail-view{display:none}
+.detail-view.on{display:block}
+.detail-view .case{padding:48px 32px 56px;max-width:1080px;margin:0 auto}
+.case-back{display:inline-flex;align-items:center;font-size:14px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 16px;margin-bottom:32px;transition:border-color .3s var(--ease),color .3s var(--ease)}
+.case-back::before{content:"←";margin-right:6px}
+.case-back:hover{color:var(--ink);border-color:var(--faint)}
+.case-text{max-width:680px}
+.case-eyebrow{font-size:13px;letter-spacing:1.5px;color:var(--accent);font-weight:600;margin-bottom:16px}
+.case-title{font-size:clamp(24px,3vw,30px);font-weight:700;line-height:1.35;text-wrap:balance}
+.case-lede{color:var(--muted);font-size:16px;margin-top:20px;text-wrap:pretty}
+.meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:36px 0 20px}
+.meta-card{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fff}
+.meta-card .k{font-size:12px;color:var(--faint);margin-bottom:6px}
+.meta-card .v{font-size:14px;font-weight:600;line-height:1.6}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.stat-card{background:var(--wash);border-radius:16px;padding:24px}
+.stat-card .num{font-size:36px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.1}
+.stat-card .num small{font-size:16px;color:var(--ink);font-weight:600;margin-left:4px}
+.stat-card .lab{font-size:14px;font-weight:600;margin-top:8px}
+.stat-card .desc{font-size:13px;color:var(--muted);margin-top:4px}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.t-card{border:1px solid var(--line);border-radius:16px;padding:24px;background:#fff}
+.t-card .tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:14px}
+.t-card .tag::before{content:"";width:18px;height:2px;background:var(--accent)}
+.t-card h5{font-size:16px;font-weight:700;margin-bottom:10px}
+.t-card p{font-size:14px;color:var(--body)}
+.t-card ul{margin-top:10px;display:grid;gap:8px;list-style:none}
+.t-card li{font-size:13.5px;color:var(--muted);padding-left:16px;position:relative}
+.t-card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.shot-banner{height:260px;border:1px dashed var(--line);border-radius:16px;background:var(--soft);display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;color:var(--faint);padding:0 32px;margin:20px 0}
+.ver-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.ver-card{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}
+.ver-card .v{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;font-variant-numeric:tabular-nums}
+.ver-card h5{font-size:15px;font-weight:700;margin-bottom:8px}
+.ver-card p{font-size:13.5px;color:var(--muted)}
+.boundary{background:var(--soft);border-radius:16px;padding:24px 28px;margin:20px 0}
+.boundary h5{font-size:16px;font-weight:700;margin-bottom:10px}
+.boundary p{font-size:14px;color:var(--body)}
+.case-nav{display:flex;justify-content:space-between;gap:16px;margin-top:40px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.case-nav b{color:var(--ink);font-weight:600}
+.case-nav a:hover b{color:var(--accent)}
 
-/* ===== 打印按钮 ===== */
-.btn-print{border:1px solid var(--line);background:var(--surface2);color:var(--muted);font-size:13px;padding:7px 14px;border-radius:8px;cursor:pointer;transition:all .2s;font-family:inherit}
-.btn-print:hover{color:var(--text);border-color:var(--faint)}
+@media(max-width:880px){
+  .meta-grid,.stat-grid,.three-col,.ver-grid{grid-template-columns:1fr}
+  .p-more{grid-template-columns:1fr}
+  .method-grid{grid-template-columns:repeat(2,1fr)}
+  .feature,.feature.flip{grid-template-columns:1fr}
+  .feature .shot,.feature.flip .shot{border-right:none;border-left:none;border-bottom:1px solid var(--line);min-height:280px}
+  .about-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .method-grid{grid-template-columns:1fr}
+  .hero{padding-block:16px 8px}
+  .case{padding:32px 24px 40px}
+  .feature .info{padding:28px 24px}
+  .case-nav{flex-direction:column;gap:10px}
+}
 
 @media print{
-  nav,.filters,.btn-print,.more{display:none!important}
+  nav,.btn-print,.feature .go,.case-back,.case-nav{display:none!important}
   body{background:#fff;color:#1a1a1a}
-  .card,.panel,.about-me,.stat,.line-pill{background:#fff;border-color:#ddd;break-inside:avoid}
-  .card .points{display:block!important}
-  header::before{display:none}
+  .feature,.panel,.about-me,.line-pill,.meta-card,.stat-card,.t-card,.ver-card{background:#fff;border-color:#ddd;break-inside:avoid}
   section{padding:24px 0}
-  .tl-item::before{border-color:#333}
 }
 </style>
 </head>
@@ -130,48 +206,81 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--faint);font-s
   <div class="nav-in">
     <div class="brand">杨宜梁 <span>·</span> 项目作品集</div>
     <div class="nav-links">
-      <a href="#journey">经历</a>
       <a href="#projects">项目</a>
-      <a href="#about">能力与工具</a>
+      <a href="#journey">经历</a>
+      <a href="#method">方法</a>
+      <a href="#about">能力</a>
       <a href="#contact">联系</a>
       <button class="btn-print" onclick="window.print()">导出 PDF</button>
     </div>
   </div>
 </nav>
 
+<!-- ===== 首页视图 ===== -->
+<div id="home">
+
 <header>
-  <div class="wrap hero">
-    <div class="kicker">区域教育科技公司（公职培训方向）· 产品与数据工具方向</div>
-    <h1>把分散的业务问题，<br>做成能直接落地的工具系统。</h1>
-    <p class="sub">从业务痛点出发完成需求梳理、规则抽象、自动化管线搭建与前端可视化落地，独立交付经营数据中台、情报聚合平台、知识沉淀系统，覆盖多主体经营数据的整合、分层呈现与逐级下钻。</p>
-    <div class="stats">
-      <div class="stat"><b>19</b><i>覆盖经营主体</i></div>
-      <div class="stat"><b>121</b><i>报名分部 / 学习中心</i></div>
-      <div class="stat"><b>3</b><i>独立交付自研系统</i></div>
-      <div class="stat"><b>1</b><i>待上线校园 C 端原型</i></div>
+  <div class="wrap hero rv">
+    <div class="kicker">区域教育科技公司（公职培训方向）· 产品与数据工具</div>
+    <h1>把分散的业务问题，做成能直接落地的工具系统。</h1>
+    <p class="sub">从业务痛点出发完成需求梳理、规则抽象、自动化管线搭建与前端可视化落地，交付经营数据中台、情报聚合平台、知识沉淀系统。</p>
+    <div class="cta">
+      <a class="btn-solid" href="#projects">查看核心项目</a>
+      <a class="btn-line" href="#contact">联系方式</a>
     </div>
   </div>
 </header>
 
-<!-- ===== 关于我 + 职业时间线 ===== -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>核心项目</h2>
+      <p>三套从痛点长出、持续迭代并在线上运行的自研系统；附项工具列于底部目录。</p>
+    </div>
+    <div class="feature-list" id="featureList"></div>
+    <div class="p-more">
+      <div class="row"><span>校园美食记录小程序</span><b>附项 · 待上线</b></div>
+      <div class="row"><span>窗口图批量识别工具</span><b>附项工具</b></div>
+      <div class="row"><span>海报批量合成工具</span><b>附项工具</b></div>
+      <div class="row"><span>「用 AI 搭数据网页」分享会</span><b>方法沉淀</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="method" style="background:var(--soft)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>工作方法</h2>
+      <p>从发现痛点到复盘迭代的完整闭环；本人负责需求、规则、方向与验收，脚本由 AI 协作生成。</p>
+    </div>
+    <div class="method-grid rv">
+      <div class="m-step"><b>01</b><h5>发现痛点</h5><p>从一线重复手工流程中识别可被规则化、自动化的环节。</p></div>
+      <div class="m-step"><b>02</b><h5>定义规则口径</h5><p>把模糊业务判断抽象成可审计、可复用的统一口径与边界。</p></div>
+      <div class="m-step"><b>03</b><h5>协作落地验收</h5><p>明确非目标与验收标准，AI 协作生成实现，本人逐项评审与回归。</p></div>
+      <div class="m-step"><b>04</b><h5>复盘迭代</h5><p>按使用反馈补口径、加视图、修边界，每轮解决一个具体问题。</p></div>
+    </div>
+    <div class="disclosure rv">协作边界：需求定义、规则拍板、验收标准与迭代方向由本人负责；实现脚本与界面代码由 AI 协作生成，本人不主张独立手写全部生产代码。页面展示数据为脱敏样例。</div>
+  </div>
+</section>
+
 <section id="journey">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head rv">
       <h2>关于我</h2>
-      <p>211 本科、英语笔译硕士，现就职于区域教育科技公司（公职培训方向），任项目运营专员。擅长把重复的手工汇总与依赖个人经验的判断，固化为可复用、可审计的工具与流程，用数据支撑经营决策。</p>
+      <p>211 本科、英语笔译硕士，现就职于区域教育科技公司（公职培训方向），任项目运营专员。擅长把重复的手工汇总与依赖个人经验的判断，固化为可复用、可审计的工具与流程。</p>
     </div>
-    <div class="about-me">
-      <p>做事遵循<b>调研—决策—执行</b>闭环：先自主搜集、对比、筛选信息，再把目标拆成可落地的步骤并闭环交付。现职期间从一线轮岗进入总部，承担竞品调研与运营数据分析，随后从流程痛点出发独立调研需求，交付覆盖 19 个经营主体、121 个报名分部的经营数据中台与自动化管线；具备 MTI 笔译的双语书面表达，以及把分析结果转成可视化报告、让非数据同事直接看懂的能力。</p>
+    <div class="about-me rv">
+      <p>做事遵循<b>调研—决策—执行</b>闭环：先自主搜集、对比、筛选信息，再把目标拆成可落地的步骤并闭环交付。现职期间从一线轮岗进入总部，承担竞品调研与运营数据分析，随后从流程痛点出发独立调研需求，交付覆盖多个经营主体与报名分部的经营数据中台与自动化管线；具备 MTI 笔译的双语书面表达，以及把分析结果转成可视化报告、让非数据同事直接看懂的能力。</p>
       <div class="lines">
-        <div class="line-pill"><b>调研 · 决策 · 执行</b><span>自主择校备考、人才Mapping、竞品调研，信息搜集与择优决策</span></div>
+        <div class="line-pill"><b>调研 · 决策 · 执行</b><span>自主择校备考、人才 Mapping、竞品调研，信息搜集与择优决策</span></div>
         <div class="line-pill"><b>数据工具 · 流程固化</b><span>把重复手工汇总写成脚本，实现每日自动更新与逐级下钻</span></div>
-        <div class="line-pill"><b>内容 · 双语表达</b><span>MTI笔译功底，运营报告与可视化呈现，对内对外讲清结论</span></div>
+        <div class="line-pill"><b>内容 · 双语表达</b><span>MTI 笔译功底，运营报告与可视化呈现，对内对外讲清结论</span></div>
       </div>
     </div>
 
-    <div class="sec-head" style="margin-top:40px"><h2>职业经历</h2><p>教育与主要工作、实习脉络。</p></div>
-    <div class="timeline">
-      <div class="tl-item lead">
+    <div class="sec-head" style="margin-top:48px"><h2>职业经历</h2><p>教育与主要工作、实习脉络。</p></div>
+    <div class="timeline rv">
+      <div class="tl-item">
         <div class="tl-time">2026.03 – 至今</div>
         <div class="tl-title">区域教育科技公司（公职培训方向）· 项目运营专员</div>
         <div class="tl-sub">入职初期完成一线业务轮岗（客户咨询接待、会话话术合规质检、短期门店统筹）；转入总部后承担竞品调研与运营数据分析，按月输出多机构课程、定价与营销动作对比；其后从流程痛点出发，独立调研需求并交付经营数据中台、情报聚合平台、知识沉淀系统三个自研产品。</div>
@@ -179,7 +288,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--faint);font-s
       <div class="tl-item">
         <div class="tl-time">2023.10 – 2023.12</div>
         <div class="tl-title">字节跳动 · 电商岗位支持 + 海外人才 Mapping（实习）</div>
-        <div class="tl-sub">参与电商岗位人员匹配，高峰期日均筛选简历近千份、日均触达 30–50 位、跟进面试 3–5 场；以案头调研方式独立完成海外人才 Mapping，摸排 NUS、NTU 等 30 余个 AI 实验室、200 余位人才，整理为结构化台账。</div>
+        <div class="tl-sub">参与电商岗位人员匹配，高峰期日均筛选简历近千份、日均触达 30–50 位、跟进面试 3–5 场；以案头调研方式独立完成海外人才 Mapping，摸排多所高校 AI 实验室与百余位人才，整理为结构化台账。</div>
       </div>
       <div class="tl-item">
         <div class="tl-time">2023.06 – 2023.09</div>
@@ -205,27 +314,10 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--faint);font-s
   </div>
 </section>
 
-<!-- ===== 项目区（由 JS 渲染） ===== -->
-<section id="projects">
+<section id="about" style="background:var(--soft)">
   <div class="wrap">
-    <div class="sec-head">
-      <h2>项目</h2>
-      <p>点击卡片展开项目背景、做法与所用工具。标签：核心 = 重点项目，个人 = 个人作品。</p>
-    </div>
-    <div class="filters" id="filters">
-      <div class="chip active" data-f="all">全部</div>
-      <div class="chip" data-f="core">核心项目</div>
-      <div class="chip" data-f="personal">个人作品</div>
-    </div>
-    <div class="grid" id="grid"></div>
-  </div>
-</section>
-
-<!-- ===== 关于 ===== -->
-<section id="about">
-  <div class="wrap">
-    <div class="sec-head"><h2>能力与工具</h2><p>以下为项目中实际使用的方法与技术栈。</p></div>
-    <div class="about-grid">
+    <div class="sec-head rv"><h2>能力与工具</h2><p>以下为项目中实际使用的方法与技术栈。</p></div>
+    <div class="about-grid rv">
       <div class="panel">
         <h3>数据与自动化</h3>
         <ul>
@@ -240,7 +332,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--faint);font-s
         <ul>
           <li>信息架构、需求梳理、多角色视图设计、规则与策略抽象</li>
           <li>原生 HTML / CSS / JavaScript、ECharts、单文件离线应用与交互原型</li>
-          <li>大模型 API 辅助内容结构化、知识库与知识图谱设计</li>
+          <li>大模型 API 辅助内容结构化、知识库与知识网络设计</li>
           <li>MTI 笔译双语书面输出，英文资料检索与规范书面表达</li>
         </ul>
       </div>
@@ -250,88 +342,281 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--faint);font-s
 
 <footer id="contact">
   <div class="wrap">
-    <p style="font-size:15px;color:var(--text);margin-bottom:8px;">杨宜梁</p>
+    <p class="fname">杨宜梁</p>
     <p>电话 17803893500　｜　邮箱 1534314309@qq.com　｜　微信 17803893500</p>
-    <p style="margin-top:8px;">个人项目作品集，基于真实项目整理；内部敏感数据、竞对名称与未公开岗位信息均已隐去。</p>
+    <p style="margin-top:8px">个人项目作品集，基于真实项目整理；内部敏感数据、竞对名称与未公开岗位信息均已隐去。</p>
   </div>
 </footer>
 
+</div><!-- /home -->
+
+<!-- ===== 详情视图（JS 渲染） ===== -->
+<div id="detail" class="detail-view"></div>
+
 <script>
-// ===== 项目数据（对外口径：三主推 + 美食附项 + 个人小工具；内部精确数、竞对真名、敏感序列不出现） =====
-const PROJECTS = [
-  {id:"A1",cat:"core",title:"区域经营数据分析中台",one:"独立完成需求梳理、口径设计、数据管线与可视化落地，覆盖 19 个经营主体、121 个报名分部的经营数据整合与逐级下钻。",
-   points:[
-     "多源自动化管线：用 Python 脚本统一归集三类结构不固定的业务母表，自动完成清洗、产品归并与周期聚合，形成可追溯的单一数据流，成品只由根源脚本重跑生成",
-     "可审计口径体系：将分类、归属、分桶等业务判断固化为可复用规则；针对零基数、负基数（净退费）等易使同比失真的场景统一标准化标注；人员归属规则与 15 万余行人工样本对拍，一致率 99.997%",
-     "分层信息架构：同一底座输出经营诊断大盘、移动端速览、详细下钻三类视图，支持省 → 地市 → 分部 → 个人四级下钻与任意历史日期回看",
-     "端到端自动分发与验收门禁：从文件归位、洗数、出图到 IM 按序推送全链路自动化；发布前自动化断言与截图回归作为验收门禁，校验不通过不予发布",
-     "战役期间延伸出地市 / 学习中心双颗粒度激励模型与分层推送通道；国考战役深页、获客漏斗等作为主看板专题呈现"
-   ],
-   tools:["Python","pandas","openpyxl","ECharts","HTML / JS","Playwright","飞书开放平台"]},
-  {id:"B1",cat:"core",title:"公职考试情报聚合平台",one:"独立设计合规采集、结构化核验、密级分层与一线投喂闭环的情报系统，并配套面向用户的岗位筛选工具。",
-   points:[
-     "合规自动巡检管线：对接 20 余个官方公开信息源，按网页列表、公开接口、渲染页面串行低频巡检，与历史快照比对发现新增公告；需登录或被拦截的源转人工清单，不绕验证码、不使用反检测手段",
-     "公开 / 内部双版本密级设计：同一信息架构维护两套页面，敏感信息仅进入内部版；版本差异以带断言的补丁控制，发布前逐页截图核对分层结果",
-     "人机协作入库闭环：设一线材料投喂入口，系统预填分类与摘要，人工逐条核验官方原文后入库，关键节点与数字均可回溯来源；采集脚本只负责发现新公告，不自动改写业务数据",
-     "客户向岗位筛选工具：支持文本、截图 OCR、职位表三种输入，自动映射学历、专业、政治面貌、地点等条件，结果可人工校正；支持多岗位对比、报告导出与冲 / 稳 / 保分级",
-     "打通多年职位表清洗与跨期统计分析，覆盖多类考试序列的时间线、档案与行动建议"
-   ],
-   tools:["Python","Playwright","中文 OCR","HTML / JS","ECharts","飞书多维表格"]},
-  {id:"E1",cat:"core",title:"个人知识沉淀系统",one:"将分散多平台素材统一采集、结构化加工，构建可检索、可串联、可成体系阅读的本地知识系统。",
-   points:[
-     "一套数据、多视图架构：同一数据源支撑卡片检索、成书阅读、知识图谱、术语深读、学习路线与工作流；唯一数据源经脚本构建生成静态页面，无需数据库与前端框架",
-     "三层内容结构化：长篇口语稿按「结论—要点—分节」重写，并列内容列表化、对照内容表格化，原始全文折叠留档可回查；沉淀 180 余条笔记、60 余个深度术语词条",
-     "双向知识网络：术语与卡片正文双向链接，悬停简介、点击深读；重复知识点关联去重；成书按知识逻辑重排为章节，不按采集时间堆砌",
-     "工程取舍：确定性内容走前端规则与本地构建，不额外调用大模型推理以控制成本；规则与工具索引可被其他任务直接复用，降低重复交接成本"
-   ],
-   tools:["Python","原生 HTML / CSS / JS","ECharts","大模型 API","本地静态构建"]},
-  {id:"F0",cat:"personal",title:"校园美食记录小程序（个人原型 · 待真机上线）",one:"面向校园场景的 C 端产品原型，独立完成信息架构、数据模型、页面与云函数设计，本地可运行闭环。",
-   points:[
-     "包含美食评价、食光轴时间线回忆、年度报告与原生 Canvas 海报、双维度评分等模块",
-     "隐私设计：不采集手机号、身份证与精确定位，生活碎片仅本人可见",
-     "当前为开发者工具内可演示原型，尚未真机部署、无真实用户与使用数据；上线并积累真实反馈后升级为正式项目条目"
-   ],
-   tools:["微信原生小程序","CloudBase 云函数","云数据库","原生 Canvas"]},
-  {id:"F1",cat:"personal",title:"窗口图批量识别工具",one:"校园美食项目配套的批量图像处理工具。",
-   points:["相邻同名档口自动合并为一家、不重复编号","批量产出识别图，减少人工逐个标记的重复操作"],
-   tools:["Python","图像 / 表格处理"]},
-  {id:"F2",cat:"personal",title:"海报批量合成工具",one:"面向重复改字场景的批量合成脚本。",
-   points:["批量替换文案并合成海报，模板复用，避免逐张手动排版"],
-   tools:["Python","图像处理"]},
-  {id:"F3",cat:"personal",title:"「用 AI 搭数据网页」分享会",one:"把 AI 辅助搭建数据网页的方法论整理为分享课件。",
-   points:["沉淀从需求拆解、规则固化到可视化落地的方法框架，作为内部分享材料"],
-   tools:["PPT","方法论沉淀"]}
-];
+/* ===== 项目数据（对外口径：内部精确数、竞对真名、敏感序列不出现） ===== */
+const CASES = {
+  zhongtai: {
+    slug:"zhongtai", tag:"核心 · 数据工具", title:"区域经营数据分析中台", mock:"chart",
+    desc:"多主体经营数据整合、口径规则抽象、自动化管线与分层下钻可视化。",
+    points:[
+      {b:"痛点切入", s:"把结构各不固定的多类业务母表归集进同一底座，替代周期重复的人工拼表。"},
+      {b:"规则抽象", s:"归属、分桶、负基数标注固化为可审计口径，同一判断每个周期得到同一结果。"},
+      {b:"分层下钻", s:"同一底座输出大盘、速览、下钻三类视图，逐级钻到分部层级并回看历史日期。"}
+    ],
+    tools:["Python","pandas","ECharts","HTML / JS"],
+    eyebrow:"核心项目 · 2026.03 – 至今",
+    title:"把多主体分散的经营数据，收敛成一条可追溯、可下钻的单一数据流。",
+    lede:"面向管理层经营复盘与一线负责人指导的双重需求，从手工汇总痛点出发，完成口径规则设计、自动化数据管线与分层可视化落地。",
+    meta:[
+      {k:"角色", v:"需求定义 · 规则口径 · 验收标准 · 迭代方向"},
+      {k:"周期", v:"2026.03 – 至今，持续迭代"},
+      {k:"状态", v:"每日自动更新，线上运行"},
+      {k:"方向", v:"数据产品 · 经营分析 · 自动化管线"},
+      {k:"工具栈", v:"Python · pandas · ECharts · HTML / JS"},
+      {k:"协作方式", v:"规则本人定义，脚本 AI 协作生成，本人评审验收"}
+    ],
+    stats:[
+      {num:"19", unit:"个", lab:"经营主体", desc:"统一归集进同一数据底座，不再各自拼表"},
+      {num:"121", unit:"个", lab:"报名分部", desc:"支持逐级下钻到分部与个人层级"},
+      {num:"3", unit:"套", lab:"交付视图", desc:"经营诊断大盘、移动端速览、详细下钻共用一套底座"}
+    ],
+    cols:[
+      {tag:"问题背景", h:"多源母表结构不固定，汇总依赖人工经验",
+       p:"经营数据分散在三类结构各不固定的母表中，周期归集与同比判断长期靠人工对照；人员归属、产品归并缺少统一规则，结论可复现性弱，复盘时难追溯依据。",
+       li:["人员归属、产品归并缺少统一规则","结论可复现性弱，复盘时难追溯依据"]},
+      {tag:"判断与规则", h:"把业务判断固化成可审计的口径体系",
+       p:"将分类、归属、分桶判断抽象为可复用规则，让同一判断在每个周期得到同一结果；零基数、负基数场景按经营方向标注，避免失真百分比误导判断。",
+       li:["零基数、负基数场景改按经营方向标注","避免失真百分比误导经营判断"]},
+      {tag:"落地架构", h:"同一底座，三类视图，四级下钻",
+       p:"数据底座统一输出经营诊断、移动速览、详细下钻三类界面，支持任意历史日期回看；出图与推送链路自动化，发布前回归校验。",
+       li:["省 → 地市 → 分部 → 个人逐级下钻","出图与推送链路自动化，发布前回归校验"]}
+    ],
+    versions:[
+      {v:"V1 · 基础大盘", h:"数据每天自动汇总到一张表", p:"先替代人工拼表，解决“数据能不能准时到齐”。"},
+      {v:"V2 · 口径与下钻", h:"补齐归属规则与多级下钻", p:"补齐负基数标注与追溯链路，让结论可复核。"},
+      {v:"V3 · 自动化分发与门禁", h:"出图推送全链路自动化", p:"发布前自动化断言与截图回归作为质量门禁。"}
+    ],
+    boundary:"本系统面向经营复盘与一线指导，不承担招生流程管理与在线交易；采集与加工范围限定在已授权的内部业务数据。实现脚本由 AI 协作生成，口径、非目标与验收标准由本人定义并把关；页面展示数据为脱敏样例，不包含真实地市、金额与人名。"
+  },
+  intel: {
+    slug:"intel", tag:"核心 · 情报系统", title:"公职考试情报聚合平台", mock:"list", flip:true,
+    desc:"公开信息采集、密级分层与一线投喂闭环，辅助岗位筛选与时效提醒。",
+    points:[
+      {b:"合规优先", s:"公开来源采集与内部资料分层隔离，巡检规则定期复核，边界清晰。"},
+      {b:"分层入库", s:"按密级、类别、考季归类，支持关键词检索与相关条目关联跳转。"},
+      {b:"投喂闭环", s:"一线回收新线索后补充规则库，平台随业务反馈持续更新。"}
+    ],
+    tools:["Python","采集脚本","HTML / JS","规则库"],
+    eyebrow:"核心项目 · 现职期间持续迭代",
+    title:"把分散在各官方站点的考试信息，收敛成合规、分层、可直接转为动作的情报系统。",
+    lede:"面向一线逐日检索公告的痛点，设计合规采集、结构化核验、密级分层与投喂闭环，并配套岗位筛选工具，让看到信息能够直接落到当日动作。",
+    meta:[
+      {k:"角色", v:"信息架构 · 合规边界 · 人机分工规则 · 验收标准"},
+      {k:"周期", v:"现职期间持续迭代"},
+      {k:"状态", v:"日常巡检运行，公开 / 内部双版本"},
+      {k:"方向", v:"情报产品 · 合规采集 · 内容结构化"},
+      {k:"工具栈", v:"Python · Playwright · HTML / JS · OCR"},
+      {k:"协作方式", v:"方案本人设计拍板，脚本 AI 协作生成，本人复核分层"}
+    ],
+    stats:[
+      {num:"多类", unit:"", lab:"考试序列", desc:"时间线、档案与行动建议统一组织"},
+      {num:"双版本", unit:"", lab:"密级分层", desc:"公开版与内部版共用母版，差异受控"},
+      {num:"三类", unit:"", lab:"输入方式", desc:"文本、截图、职位表均可进入筛选"}
+    ],
+    cols:[
+      {tag:"问题背景", h:"公告分散、信息与动作脱节",
+       p:"多类考试序列公告分散在多个官方站点，一线逐日人工浏览容易遗漏节点；看到信息后与招生日历、课程产品、责任分工脱节，无法直接转为当日动作。",
+       li:["人工逐日浏览，容易错过报名与节点","信息看到后无法直接对接当日动作"]},
+      {tag:"判断与规则", h:"合规优先，机器发现、人工核验",
+       p:"只访问无需登录的公开页面，串行低频请求；模型抽取的时间、条件先标记待核验，人工核对官方原文后才允许入库；技术上能做到不等于业务上应当做。",
+       li:["不绕过验证码，不使用反检测手段","机器不替人拍板，关键数字回溯来源"]},
+      {tag:"落地架构", h:"一套母版，两套权限，投喂闭环",
+       p:"公开版与内部版共用一套渲染母版，敏感内容物理隔离；一线可投喂新材料，系统预填分类与摘要，核验后进入知识库。",
+       li:["版本差异由断言补丁控制，发布前逐页核对","新线索回收进规则库，平台随反馈更新"]}
+    ],
+    versions:[
+      {v:"V1 · 巡检与归集", h:"公开公告自动发现并入库", p:"替代逐日人工浏览，减少节点遗漏。"},
+      {v:"V2 · 双版本分层", h:"公开 / 内部边界脚本化控制", p:"用断言补丁与截图核对守住分层，防止敏感内容外发。"},
+      {v:"V3 · 筛选工具", h:"自由文本与截图转结构化条件", p:"识别结果预填进可编辑表单，人工校正后再出对比与报告。"}
+    ],
+    boundary:"平台只采集无需登录的公开页面，被拦截站点转人工清单；竞对名称、价格与内部岗位信息仅留存于内部版本。采集脚本只负责发现新公告，不自动改写业务数据；页面为脱敏示意，不展示未公开岗位与机构明细。"
+  },
+  knowledge: {
+    slug:"knowledge", tag:"核心 · 知识系统", title:"个人知识沉淀系统", mock:"cards",
+    desc:"素材三层结构化加工，一套数据多视图呈现，词条之间双向串联成网。",
+    points:[
+      {b:"三层加工", s:"提炼结论、结构化分节、原文归档并存，既能快速查阅也能回查出处。"},
+      {b:"一套数据", s:"卡片、词条、关联链路共用同一套结构化数据，更新一处全视图同步。"},
+      {b:"串联织网", s:"相近概念互相链接，新素材自动补进既有卡片与问答，避免重复建条。"}
+    ],
+    tools:["原生 JS","结构化数据","HTML / CSS"],
+    eyebrow:"核心项目 · 个人自研产品",
+    title:"把散落的多平台素材，加工成可检索、可串联、可成体系阅读的知识网络。",
+    lede:"面向素材分散、查找依赖回忆、跨领域知识点孤立的问题，设计本地运行的多视图知识管理系统，完成采集、三层结构化加工与双向织网。",
+    meta:[
+      {k:"角色", v:"信息架构 · 加工规则 · 织网模型 · 视图取舍"},
+      {k:"周期", v:"持续迭代，本地运行"},
+      {k:"状态", v:"个人 / 小范围使用，离线可用"},
+      {k:"方向", v:"知识产品 · 信息架构 · 前端原型"},
+      {k:"工具栈", v:"原生 JS · 结构化数据 · HTML / CSS"},
+      {k:"协作方式", v:"规则与模型本人拍板，脚本 AI 协作生成，本人验收"}
+    ],
+    stats:[
+      {num:"一套", unit:"", lab:"数据源", desc:"笔记、词条、图谱共用同一事实源"},
+      {num:"六类", unit:"", lab:"浏览视图", desc:"检索、成书、图谱、术语、路线、工作流"},
+      {num:"三层", unit:"", lab:"加工深度", desc:"提炼结论、结构化分节、原文归档"}
+    ],
+    cols:[
+      {tag:"问题背景", h:"素材分散，长篇内容看完即忘",
+       p:"学习素材分散在多个平台的收藏夹、截图与文件夹里，查找依赖回忆；长篇逐字稿读完难以沉淀，跨领域知识点彼此孤立。",
+       li:["收藏夹分散，检索依赖个人记忆","长篇内容缺少分层，读完难以复用"]},
+      {tag:"判断与规则", h:"先定内容规则，再定技术方案",
+       p:"什么值得收录、如何分节、怎样建立关联是核心；并列内容列表化、对照内容表格化、流程内容步骤化，原文折叠留档不删改。",
+       li:["重复问题不重复建条，更好答案更新原答案","过时或无法核实的内容不收录"]},
+      {tag:"落地架构", h:"唯一数据源，多视图渲染，双向织网",
+       p:"数据经构建脚本生成静态页面，无需数据库与前端框架；词条与卡片双向链接，术语之间按因果、前后置与对照关系相连。",
+       li:["一套数据更新，全部视图同步","图谱识别枢纽节点与孤立内容"]}
+    ],
+    versions:[
+      {v:"V1 · 卡片与检索", h:"素材按结论—要点—分节入库", p:"先解决“找得到”。"},
+      {v:"V2 · 多视图", h:"成书、图谱、术语深读陆续上线", p:"从单一笔记扩展为成体系阅读。"},
+      {v:"V3 · 织网与巡检", h:"双向链接与重复去重持续运行", p:"定期检查失效链接、重复条目与孤立节点。"}
+    ],
+    boundary:"这是面向个人学习场景的自研知识产品，不包装为多人在线系统；确定性加工走本地规则与构建脚本，仅非结构化素材的提炼分节借助模型 API；系统本地运行，凭证不进入页面产物。"
+  }
+};
+const ORDER = ["zhongtai","intel","knowledge"];
 
-const CAT_LABEL={core:"核心",work:"公司",personal:"个人"};
-const grid=document.getElementById("grid");
-function render(f){
-  grid.innerHTML="";
-  PROJECTS.filter(p=>f==="all"||p.cat===f).forEach(p=>{
-    const card=document.createElement("div");
-    card.className="card";
-    card.dataset.cat=p.cat;
-    card.innerHTML=`
-      <div class="card-top">
-        <h3>${p.id} · ${p.title}</h3>
-        <span class="tag ${p.cat}">${CAT_LABEL[p.cat]}</span>
-      </div>
-      <p class="one">${p.one}</p>
-      <ul class="points">${p.points.map(x=>`<li>${x}</li>`).join("")}</ul>
-      <div class="meta">${p.tools.map(t=>`<span class="tool">${t}</span>`).join("")}</div>
-      <span class="more"></span>`;
-    card.addEventListener("click",()=>card.classList.toggle("open"));
-    grid.appendChild(card);
-  });
+/* ===== 首页三排大卡渲染 ===== */
+function mockStage(type){
+  let inner = "";
+  if(type === "chart"){
+    inner = `
+      <div class="mock-row w60"></div>
+      <div class="mock-chart"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="mock-row w80"></div><div class="mock-row w40"></div>
+      <div class="mock-row w80"></div><div class="mock-row w60"></div>
+      <div class="mock-row w60"></div>
+      <div class="mock-chart"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="mock-row w80"></div><div class="mock-row w40"></div>
+      <div class="mock-row w80"></div><div class="mock-row w60"></div>`;
+  } else if(type === "cards"){
+    inner = `
+      <div class="mock-chart" style="height:64px"><i></i><i></i><i></i></div>
+      <div class="mock-row w60"></div><div class="mock-row w80"></div>
+      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>
+      <div class="mock-chart" style="height:64px"><i></i><i></i><i></i></div>
+      <div class="mock-row w60"></div><div class="mock-row w80"></div>
+      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>`;
+  } else {
+    inner = `
+      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>
+      <div class="mock-row w80"></div><div class="mock-row w40"></div>
+      <div class="mock-row w60"></div><div class="mock-row w80"></div>
+      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>
+      <div class="mock-row w80"></div><div class="mock-row w40"></div>
+      <div class="mock-row w60"></div><div class="mock-row w80"></div>`;
+  }
+  return `<div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="addr"></span></div>
+    <div class="stage"><div class="scroll-inner">${inner}</div><div class="mock-caption">界面演示位 · 后续替换为脱敏录屏与截图</div></div>
+  </div>`;
 }
-render("all");
 
-document.getElementById("filters").addEventListener("click",e=>{
-  const chip=e.target.closest(".chip"); if(!chip)return;
-  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
-  chip.classList.add("active");
-  render(chip.dataset.f);
+function renderFeatures(){
+  const list = document.getElementById("featureList");
+  list.innerHTML = ORDER.map(key=>{
+    const c = CASES[key];
+    const cls = c.flip ? "feature flip" : "feature";
+    const info = `
+      <div class="info">
+        <span class="tag">${c.tag}</span>
+        <h3>${c.title}</h3>
+        <p class="desc">${c.desc}</p>
+        <ul class="points">${c.points.map(p=>`<li class="point"><b>${p.b}</b><span>${p.s}</span></li>`).join("")}</ul>
+        <div class="tools">${c.tools.map(t=>`<span class="tool">${t}</span>`).join("")}</div>
+        <span class="go">查看案例详情 →</span>
+      </div>`;
+    const shot = `<div class="shot">${mockStage(c.mock)}</div>`;
+    return `<a class="${cls}" href="#/case-${c.slug}">${c.flip ? info + shot : shot + info}</a>`;
+  }).join("");
+}
+
+/* ===== 详情视图渲染 ===== */
+function renderCase(key){
+  const c = CASES[key];
+  if(!c) return;
+  const idx = ORDER.indexOf(key);
+  const prev = ORDER[(idx-1+ORDER.length)%ORDER.length];
+  const next = ORDER[(idx+1)%ORDER.length];
+  const el = document.getElementById("detail");
+  el.innerHTML = `
+  <div class="case">
+    <a class="case-back" href="#projects">返回全部项目</a>
+    <div class="case-text">
+      <div class="case-eyebrow">${c.eyebrow}</div>
+      <h1 class="case-title">${c.title}</h1>
+      <p class="case-lede">${c.lede}</p>
+    </div>
+    <div class="meta-grid">${c.meta.map(m=>`<div class="meta-card"><div class="k">${m.k}</div><div class="v">${m.v}</div></div>`).join("")}</div>
+    <div class="stat-grid">${c.stats.map(s=>`<div class="stat-card"><div class="num">${s.num}<small>${s.unit}</small></div><div class="lab">${s.lab}</div><div class="desc">${s.desc}</div></div>`).join("")}</div>
+    <div class="three-col">${c.cols.map(t=>`<div class="t-card"><span class="tag">${t.tag}</span><h5>${t.h}</h5><p>${t.p}</p><ul>${t.li.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>
+    <div class="shot-banner">界面截图与脱敏录屏位 · 第二批素材接入后替换</div>
+    <div class="ver-grid">${c.versions.map(v=>`<div class="ver-card"><div class="v">${v.v}</div><h5>${v.h}</h5><p>${v.p}</p></div>`).join("")}</div>
+    <div class="boundary"><h5>取舍与边界</h5><p>${c.boundary}</p></div>
+    <div class="case-nav">
+      <a href="#/case-${prev}">← <b>${CASES[prev].title}</b></a>
+      <a href="#/case-${next}"><b>${CASES[next].title}</b> →</a>
+    </div>
+  </div>`;
+}
+
+/* ===== 路由 ===== */
+const homeEl = document.getElementById("home");
+const detailEl = document.getElementById("detail");
+function route(){
+  const h = location.hash || "#/";
+  const m = h.match(/^#\/case-([a-z]+)$/);
+  if(m && CASES[m[1]]){
+    renderCase(m[1]);
+    homeEl.style.display = "none";
+    detailEl.classList.add("on");
+    window.scrollTo(0,0);
+  } else {
+    detailEl.classList.remove("on");
+    detailEl.innerHTML = "";
+    homeEl.style.display = "block";
+  }
+}
+window.addEventListener("hashchange", route);
+
+/* 详情页内点击首页锚点：先回首页，再滚动 */
+document.querySelectorAll(".nav-links a").forEach(a=>{
+  a.addEventListener("click", e=>{
+    const h = location.hash || "#/";
+    if(!/^#\/case-/.test(h)) return;
+    e.preventDefault();
+    location.hash = "#/";
+    const id = a.getAttribute("href").slice(1);
+    setTimeout(()=>{
+      const t = document.getElementById(id);
+      if(t) t.scrollIntoView({behavior:"smooth"});
+    }, 60);
+  });
 });
+
+/* ===== 滚动揭示（仅一次，reduced-motion 兜底） ===== */
+function initReveal(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {threshold:.08});
+  document.querySelectorAll("#home .rv").forEach(el=>io.observe(el));
+}
+
+renderFeatures();
+route();
+initReveal();
 </script>
 </body>
 </html>
