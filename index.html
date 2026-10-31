@@ -120,13 +120,14 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 /* ===== 滚动揭示 ===== */
 .rv{opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease),transform .45s var(--ease);transition-delay:var(--d,0ms)}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}.detail-view.on .case{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
 
 /* ===== 详情视图 ===== */
 .detail-view{display:none}
 .detail-view.on{display:block}
 .detail-view.on .case{opacity:0;transform:translateY(14px);transition:opacity .32s var(--ease),transform .32s var(--ease)}
 .detail-view.on .case.in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.detail-view.on .case{opacity:1;transform:none;transition:none}}
 .detail-view .case{padding:48px 32px 56px;max-width:1080px;margin:0 auto}
 .case-back{display:inline-flex;align-items:center;font-size:14px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 16px;margin-bottom:32px;transition:border-color .3s var(--ease),color .3s var(--ease)}
 .case-back::before{content:"←";margin-right:6px}
