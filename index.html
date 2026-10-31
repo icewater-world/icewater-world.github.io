@@ -118,13 +118,15 @@ footer{border-top:1px solid var(--line);padding:40px 0;color:var(--faint);font-s
 footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 
 /* ===== 滚动揭示 ===== */
-.rv{opacity:0;transform:translateY(12px);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.rv{opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease),transform .45s var(--ease);transition-delay:var(--d,0ms)}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion: reduce){.rv{opacity:1;transform:none;transition:none}.detail-view.on .case{opacity:1;transform:none;transition:none}}
 
 /* ===== 详情视图 ===== */
 .detail-view{display:none}
 .detail-view.on{display:block}
+.detail-view.on .case{opacity:0;transform:translateY(14px);transition:opacity .32s var(--ease),transform .32s var(--ease)}
+.detail-view.on .case.in{opacity:1;transform:none}
 .detail-view .case{padding:48px 32px 56px;max-width:1080px;margin:0 auto}
 .case-back{display:inline-flex;align-items:center;font-size:14px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 16px;margin-bottom:32px;transition:border-color .3s var(--ease),color .3s var(--ease)}
 .case-back::before{content:"←";margin-right:6px}
@@ -174,6 +176,46 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 .case-nav b{color:var(--ink);font-weight:600}
 .case-nav a:hover b{color:var(--accent)}
 
+/* ===== 键盘焦点态（可见、不依赖鼠标） ===== */
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:10px}
+
+/* ===== 详情页轻量循环示意（纯 CSS/SVG，离屏暂停，reduced-motion 静止） ===== */
+.flow-strip{display:flex;align-items:center;min-height:72px;margin:4px 0 20px}
+.fs-node{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 auto}
+.fs-circle{width:44px;height:44px;border-radius:50%;background:var(--wash);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center}
+.fs-circle svg{width:20px;height:20px;stroke:var(--accent);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fs-lab{font-size:12px;color:var(--muted);white-space:nowrap}
+.fs-line{position:relative;flex:1;height:1px;background:var(--line);margin:0 14px;align-self:center}
+.fs-dot{position:absolute;top:-2.5px;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:0;animation:dotX 4s linear infinite}
+.fs-dot.d2{animation-delay:2s}
+@keyframes dotX{0%{left:0;opacity:0}12%{opacity:.55}88%{opacity:.55}100%{left:calc(100% - 5px);opacity:0}}
+/* 情报：汇聚 */
+.fs-intel{display:flex;align-items:center;gap:20px;width:100%}
+.fs-srcs{display:flex;flex-direction:column;gap:14px;flex:0 0 auto}
+.fs-src{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--muted)}
+.fs-src i{width:8px;height:8px;border-radius:50%;background:var(--line);animation:srcPulse 3.2s ease-in-out infinite}
+.fs-src:nth-child(2) i{animation-delay:.4s}
+.fs-src:nth-child(3) i{animation-delay:.8s}
+@keyframes srcPulse{0%,100%{background:var(--line)}50%{background:var(--accent);opacity:.5}}
+.fs-join{flex:1;position:relative;height:72px}
+.fs-join svg{width:100%;height:100%;display:block}
+.fs-join line{stroke:var(--line);stroke-width:1}
+/* 知识库：织网 */
+.fs-net{display:flex;justify-content:center;width:100%}
+.fs-net svg{width:100%;max-width:520px;height:auto}
+.fs-net .net-line{stroke:var(--line);stroke-width:1.2;animation:lineBreath 4s ease-in-out infinite}
+.fs-net .net-line.l2{animation-delay:1s}
+.fs-net .net-line.l3{animation-delay:2s}
+@keyframes lineBreath{0%,100%{opacity:.35}50%{opacity:.5}}
+.fs-net .net-node{fill:var(--wash);stroke:var(--accent);stroke-width:1.5}
+.fs-net .net-node-core{fill:var(--accent);opacity:.14;animation:nodePulse 4s ease-in-out infinite}
+@keyframes nodePulse{0%,100%{opacity:.1}50%{opacity:.24}}
+.fs-net text{font-size:11px;fill:var(--muted);font-family:inherit;text-anchor:middle}
+/* 离屏暂停：默认 paused，进入视口由 JS 加 .playing */
+.flow-strip .fs-dot,.flow-strip .fs-src i,.flow-strip .net-line,.flow-strip .net-node-core{animation-play-state:paused}
+.flow-strip.playing .fs-dot,.flow-strip.playing .fs-src i,.flow-strip.playing .net-line,.flow-strip.playing .net-node-core{animation-play-state:running}
+@media (prefers-reduced-motion: reduce){.flow-strip .fs-dot,.flow-strip .fs-src i,.flow-strip .net-line,.flow-strip .net-node-core{animation:none}}
+
 @media(max-width:880px){
   .meta-grid,.stat-grid,.three-col,.ver-grid{grid-template-columns:1fr}
   .p-more{grid-template-columns:1fr}
@@ -189,6 +231,17 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
   .case{padding:32px 24px 40px}
   .feature .info{padding:28px 24px}
   .case-nav{flex-direction:column;gap:10px}
+  /* 循环示意窄屏 */
+  .flow-strip{min-height:64px}
+  .fs-circle{width:38px;height:38px}
+  .fs-circle svg{width:17px;height:17px}
+  .fs-line{margin:0 8px}
+  .fs-intel{flex-wrap:wrap;row-gap:18px}
+  .fs-srcs{flex-direction:row;gap:16px;width:100%;justify-content:center;order:1}
+  .fs-join{display:none}
+  .fs-intel .fs-node{order:2}
+  .fs-intel .fs-line{order:3;flex:0 0 32px}
+  .fs-intel .fs-node:last-of-type{order:4}
 }
 
 @media print{
@@ -196,6 +249,8 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
   body{background:#fff;color:#1a1a1a}
   .feature,.panel,.about-me,.line-pill,.meta-card,.stat-card,.t-card,.ver-card{background:#fff;border-color:#ddd;break-inside:avoid}
   section{padding:24px 0}
+  .rv,.detail-view.on .case{opacity:1!important;transform:none!important;transition:none!important}
+  .flow-strip .fs-dot,.flow-strip .fs-src i,.flow-strip .net-line,.flow-strip .net-node-core{animation:none!important}
 }
 </style>
 </head>
@@ -252,11 +307,11 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
       <h2>工作方法</h2>
       <p>从发现痛点到复盘迭代的完整闭环；本人负责需求、规则、方向与验收，脚本由 AI 协作生成。</p>
     </div>
-    <div class="method-grid rv">
-      <div class="m-step"><b>01</b><h5>发现痛点</h5><p>从一线重复手工流程中识别可被规则化、自动化的环节。</p></div>
-      <div class="m-step"><b>02</b><h5>定义规则口径</h5><p>把模糊业务判断抽象成可审计、可复用的统一口径与边界。</p></div>
-      <div class="m-step"><b>03</b><h5>协作落地验收</h5><p>明确非目标与验收标准，AI 协作生成实现，本人逐项评审与回归。</p></div>
-      <div class="m-step"><b>04</b><h5>复盘迭代</h5><p>按使用反馈补口径、加视图、修边界，每轮解决一个具体问题。</p></div>
+    <div class="method-grid">
+      <div class="m-step rv" style="--d:0ms"><b>01</b><h5>发现痛点</h5><p>从一线重复手工流程中识别可被规则化、自动化的环节。</p></div>
+      <div class="m-step rv" style="--d:50ms"><b>02</b><h5>定义规则口径</h5><p>把模糊业务判断抽象成可审计、可复用的统一口径与边界。</p></div>
+      <div class="m-step rv" style="--d:100ms"><b>03</b><h5>协作落地验收</h5><p>明确非目标与验收标准，AI 协作生成实现，本人逐项评审与回归。</p></div>
+      <div class="m-step rv" style="--d:150ms"><b>04</b><h5>复盘迭代</h5><p>按使用反馈补口径、加视图、修边界，每轮解决一个具体问题。</p></div>
     </div>
     <div class="disclosure rv">协作边界：需求定义、规则拍板、验收标准与迭代方向由本人负责；实现脚本与界面代码由 AI 协作生成，本人不主张独立手写全部生产代码。页面展示数据为脱敏样例。</div>
   </div>
@@ -268,12 +323,12 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
       <h2>关于我</h2>
       <p>211 本科 · 硕士，现就职于区域教育科技公司（公职培训方向），任项目运营专员。擅长把重复的手工汇总与依赖个人经验的判断，固化为可复用、可审计的工具与流程。</p>
     </div>
-    <div class="about-me rv">
-      <p>做事遵循<b>调研—决策—执行</b>闭环：先自主搜集、对比、筛选信息，再把目标拆成可落地的步骤并闭环交付。现职期间从一线轮岗进入总部，承担竞品调研与运营数据分析，随后从流程痛点出发独立调研需求，交付覆盖多个经营主体与报名分部的经营数据中台与自动化管线；能把分析结果转成可视化报告，让非数据同事直接看懂结论。</p>
+    <div class="about-me">
+      <p class="rv" style="--d:0ms">做事遵循<b>调研—决策—执行</b>闭环：先自主搜集、对比、筛选信息，再把目标拆成可落地的步骤并闭环交付。现职期间从一线轮岗进入总部，承担竞品调研与运营数据分析，随后从流程痛点出发独立调研需求，交付覆盖多个经营主体与报名分部的经营数据中台与自动化管线；能把分析结果转成可视化报告，让非数据同事直接看懂结论。</p>
       <div class="lines">
-        <div class="line-pill"><b>调研 · 决策 · 执行</b><span>自主择校备考、人才 Mapping、竞品调研，信息搜集与择优决策</span></div>
-        <div class="line-pill"><b>数据工具 · 流程固化</b><span>把重复手工汇总写成脚本，实现每日自动更新与逐级下钻</span></div>
-        <div class="line-pill"><b>内容 · 知识结构化</b><span>长篇素材提炼为可检索、可串联的知识网络</span></div>
+        <div class="line-pill rv" style="--d:60ms"><b>调研 · 决策 · 执行</b><span>自主择校备考、人才 Mapping、竞品调研，信息搜集与择优决策</span></div>
+        <div class="line-pill rv" style="--d:120ms"><b>数据工具 · 流程固化</b><span>把重复手工汇总写成脚本，实现每日自动更新与逐级下钻</span></div>
+        <div class="line-pill rv" style="--d:180ms"><b>内容 · 知识结构化</b><span>长篇素材提炼为可检索、可串联的知识网络</span></div>
       </div>
     </div>
 
@@ -316,8 +371,8 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 <section id="about" style="background:var(--soft)">
   <div class="wrap">
     <div class="sec-head rv"><h2>能力与工具</h2><p>以下为项目中实际使用的方法与技术栈。</p></div>
-    <div class="about-grid rv">
-      <div class="panel">
+    <div class="about-grid">
+      <div class="panel rv" style="--d:0ms">
         <h3>数据与自动化</h3>
         <ul>
           <li>Python（pandas / openpyxl / Playwright）：多源母表清洗、口径治理与自动化管线，表头认列与批量表格处理</li>
@@ -326,7 +381,7 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
           <li>发布前质量门禁：自动化断言、多视口回归、截图留档，未通过不发布</li>
         </ul>
       </div>
-      <div class="panel">
+      <div class="panel rv" style="--d:50ms">
         <h3>产品与前端</h3>
         <ul>
           <li>需求洞察、信息架构、多角色视图设计、规则与策略抽象、产品迭代推动</li>
@@ -335,7 +390,7 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
           <li>用户流程与合规设计：一线工作流嵌入、公开 / 内部权限分层、合规边界取舍</li>
         </ul>
       </div>
-      <div class="panel">
+      <div class="panel rv" style="--d:100ms">
         <h3>研究 · AI · 内容</h3>
         <ul>
           <li>竞品与情报分析：公开信息合规采集、结构化核验、月度对标输出</li>
@@ -344,7 +399,7 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
           <li>长篇素材三层结构化加工（结论 / 要点 / 分节 + 原文留档）与 Markdown 内容组织</li>
         </ul>
       </div>
-      <div class="panel">
+      <div class="panel rv" style="--d:150ms">
         <h3>协作与工程</h3>
         <ul>
           <li>飞书开放平台：IM 消息推送、多维表格、端到端自动化分发</li>
@@ -546,9 +601,73 @@ function mainShot(c){
   </div>`;
 }
 
+/* ===== 详情页轻量循环示意（纯内联 SVG/CSS，零 JS 动画） ===== */
+function flowStrip(slug){
+  if(slug==="zhongtai"){
+    return `<div class="flow-strip" aria-hidden="true">
+      <div class="fs-node">
+        <div class="fs-circle"><svg viewBox="0 0 24 24"><line x1="5" y1="7" x2="19" y2="7"/><line x1="5" y1="12" x2="19" y2="12"/><line x1="5" y1="17" x2="13" y2="17"/></svg></div>
+        <span class="fs-lab">多源母表</span>
+      </div>
+      <div class="fs-line"><i class="fs-dot d1"></i></div>
+      <div class="fs-node">
+        <div class="fs-circle"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg></div>
+        <span class="fs-lab">口径规则</span>
+      </div>
+      <div class="fs-line"><i class="fs-dot d2"></i></div>
+      <div class="fs-node">
+        <div class="fs-circle"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="6" height="14" rx="1"/><rect x="11" y="5" width="9" height="6" rx="1"/><rect x="11" y="14" width="9" height="5" rx="1"/></svg></div>
+        <span class="fs-lab">三类视图</span>
+      </div>
+    </div>`;
+  }
+  if(slug==="intel"){
+    return `<div class="flow-strip fs-intel" aria-hidden="true">
+      <div class="fs-srcs">
+        <div class="fs-src"><i></i>官方公告</div>
+        <div class="fs-src"><i></i>职位表格</div>
+        <div class="fs-src"><i></i>一线投喂</div>
+      </div>
+      <div class="fs-join">
+        <svg viewBox="0 0 300 72" preserveAspectRatio="none">
+          <line x1="0" y1="16" x2="150" y2="36"/>
+          <line x1="0" y1="36" x2="150" y2="36"/>
+          <line x1="0" y1="56" x2="150" y2="36"/>
+        </svg>
+      </div>
+      <div class="fs-node">
+        <div class="fs-circle"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></div>
+        <span class="fs-lab">人工核验</span>
+      </div>
+      <div class="fs-line"><i class="fs-dot d1"></i></div>
+      <div class="fs-node">
+        <div class="fs-circle"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="9" y1="13" x2="15" y2="13"/></svg></div>
+        <span class="fs-lab">分层入库</span>
+      </div>
+    </div>`;
+  }
+  return `<div class="flow-strip fs-net" aria-hidden="true">
+    <svg viewBox="0 0 520 130" role="img" aria-label="知识网络示意">
+      <line class="net-line l1" x1="120" y1="65" x2="260" y2="35"/>
+      <line class="net-line l2" x1="120" y1="65" x2="260" y2="95"/>
+      <line class="net-line l3" x1="260" y1="35" x2="400" y2="65"/>
+      <line class="net-line l2" x1="260" y1="95" x2="400" y2="65"/>
+      <circle class="net-node-core" cx="120" cy="65" r="26"/>
+      <circle class="net-node" cx="120" cy="65" r="18"/>
+      <circle class="net-node" cx="260" cy="35" r="18"/>
+      <circle class="net-node" cx="260" cy="95" r="18"/>
+      <circle class="net-node" cx="400" cy="65" r="18"/>
+      <text x="120" y="108">卡片</text>
+      <text x="260" y="18">词条</text>
+      <text x="260" y="122">问答</text>
+      <text x="400" y="108">图谱</text>
+    </svg>
+  </div>`;
+}
+
 function renderFeatures(){
   const list = document.getElementById("featureList");
-  list.innerHTML = ORDER.map(key=>{
+  list.innerHTML = ORDER.map((key,i)=>{
     const c = CASES[key];
     const cls = c.flip ? "feature flip" : "feature";
     const info = `
@@ -561,7 +680,7 @@ function renderFeatures(){
         <span class="go">查看案例详情 →</span>
       </div>`;
     const shot = `<div class="shot">${mainShot(c)}</div>`;
-    return `<a class="${cls}" href="#/case-${c.slug}">${c.flip ? info + shot : shot + info}</a>`;
+    return `<a class="${cls} rv" style="--d:${i*50}ms" href="#/case-${c.slug}">${c.flip ? info + shot : shot + info}</a>`;
   }).join("");
 }
 
@@ -575,23 +694,24 @@ function renderCase(key){
   const el = document.getElementById("detail");
   el.innerHTML = `
   <div class="case">
-    <a class="case-back" href="#projects">返回全部项目</a>
-    <div class="case-text">
+    <a class="case-back rv" style="--d:0ms" href="#projects">返回全部项目</a>
+    <div class="case-text rv" style="--d:60ms">
       <div class="case-eyebrow">${c.eyebrow}</div>
       <h1 class="case-title">${c.title}</h1>
       <p class="case-lede">${c.lede}</p>
     </div>
-    <div class="meta-grid">${c.meta.map(m=>`<div class="meta-card"><div class="k">${m.k}</div><div class="v">${m.v}</div></div>`).join("")}</div>
-    <div class="stat-grid">${c.stats.map(s=>`<div class="stat-card"><div class="num">${s.num}<small>${s.unit}</small></div><div class="lab">${s.lab}</div><div class="desc">${s.desc}</div></div>`).join("")}</div>
-    <div class="three-col">${c.cols.map(t=>`<div class="t-card"><span class="tag">${t.tag}</span><h5>${t.h}</h5><p>${t.p}</p><ul>${t.li.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>
-    <div class="gallery">
+    ${flowStrip(key)}
+    <div class="meta-grid rv" style="--d:120ms">${c.meta.map(m=>`<div class="meta-card"><div class="k">${m.k}</div><div class="v">${m.v}</div></div>`).join("")}</div>
+    <div class="stat-grid rv" style="--d:180ms">${c.stats.map(s=>`<div class="stat-card"><div class="num">${s.num}<small>${s.unit}</small></div><div class="lab">${s.lab}</div><div class="desc">${s.desc}</div></div>`).join("")}</div>
+    <div class="three-col rv">${c.cols.map(t=>`<div class="t-card"><span class="tag">${t.tag}</span><h5>${t.h}</h5><p>${t.p}</p><ul>${t.li.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>
+    <div class="gallery rv">
       <div class="g-g-main"><img src="${c.shots.main.src}" alt="${c.title}主界面截图" loading="lazy"></div>
       <div class="g-g-sub">${c.shots.sub.map(s=>`<div class="g-g-item"><div class="g-img"><img src="${s.src}" alt="${c.title}界面截图" loading="lazy"></div><div class="g-g-cap">${s.cap}</div></div>`).join("")}</div>
       <div class="g-note">以下界面均为脱敏演示样例，地名、金额与人名已替换为虚拟样例。</div>
     </div>
-    <div class="ver-grid">${c.versions.map(v=>`<div class="ver-card"><div class="v">${v.v}</div><h5>${v.h}</h5><p>${v.p}</p></div>`).join("")}</div>
-    <div class="boundary"><h5>取舍与边界</h5><p>${c.boundary}</p></div>
-    <div class="case-nav">
+    <div class="ver-grid rv">${c.versions.map(v=>`<div class="ver-card"><div class="v">${v.v}</div><h5>${v.h}</h5><p>${v.p}</p></div>`).join("")}</div>
+    <div class="boundary rv"><h5>取舍与边界</h5><p>${c.boundary}</p></div>
+    <div class="case-nav rv">
       <a href="#/case-${prev}">← <b>${CASES[prev].title}</b></a>
       <a href="#/case-${next}"><b>${CASES[next].title}</b> →</a>
     </div>
@@ -608,7 +728,14 @@ function route(){
     renderCase(m[1]);
     homeEl.style.display = "none";
     detailEl.classList.add("on");
+    observeDetail();
     window.scrollTo(0,0);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      const caseEl = detailEl.querySelector(".case");
+      if(caseEl) caseEl.classList.add("in");
+      // 首屏块进入即显现，不依赖滚动观察器
+      detailEl.querySelectorAll(".case-back,.case-text,.meta-grid,.stat-grid").forEach(el=>el.classList.add("in"));
+    }));
   } else {
     detailEl.classList.remove("on");
     detailEl.innerHTML = "";
@@ -632,12 +759,29 @@ document.querySelectorAll(".nav-links a").forEach(a=>{
   });
 });
 
-/* ===== 滚动揭示（仅一次，reduced-motion 兜底） ===== */
-function initReveal(){
+/* ===== 滚动揭示：首页 / 详情分别观察，触发即取消观察；reduced-motion 由 CSS 兜底 ===== */
+let homeIO = null, detailIO = null, flowIO = null;
+function makeRevealIO(){
   const io = new IntersectionObserver(entries=>{
     entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
   }, {threshold:.08});
-  document.querySelectorAll("#home .rv").forEach(el=>io.observe(el));
+  return io;
+}
+function initReveal(){
+  homeIO = makeRevealIO();
+  document.querySelectorAll("#home .rv").forEach(el=>homeIO.observe(el));
+}
+function observeDetail(){
+  if(detailIO) detailIO.disconnect();
+  detailIO = makeRevealIO();
+  // 仅滚动组进入视口再触发；首屏块由 route() 双帧直接补 .in
+  document.querySelectorAll("#detail .three-col,#detail .gallery,#detail .ver-grid,#detail .boundary,#detail .case-nav")
+    .forEach(el=>detailIO.observe(el));
+  if(flowIO) flowIO.disconnect();
+  flowIO = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{ en.target.classList.toggle("playing", en.isIntersecting); });
+  }, {threshold:.2});
+  document.querySelectorAll("#detail .flow-strip").forEach(el=>flowIO.observe(el));
 }
 
 renderFeatures();
