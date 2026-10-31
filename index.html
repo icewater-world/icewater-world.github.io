@@ -55,26 +55,15 @@ section{padding:56px 0}
 .feature{display:grid;grid-template-columns:1.12fr .88fr;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff;transition:transform .32s var(--ease),box-shadow .32s var(--ease)}
 .feature:hover{transform:translateY(-4px);box-shadow:0 18px 42px -22px rgba(37,99,235,.32)}
 .feature.flip{grid-template-columns:.88fr 1.12fr}
-.feature .shot{background:var(--soft);position:relative;min-height:340px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);padding:24px}
+.feature .shot{background:var(--soft);position:relative;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);padding:20px}
 .feature.flip .shot{border-right:none;border-left:1px solid var(--line)}
 .browser{width:100%;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 12px 30px -18px rgba(16,30,50,.25)}
 .browser .bar{display:flex;gap:6px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);background:#fafbfc}
 .browser .dot{width:8px;height:8px;border-radius:50%;background:#d7dde3}
 .browser .addr{margin-left:10px;flex:1;height:16px;border-radius:6px;background:var(--soft)}
-.browser .stage{height:250px;overflow:hidden;position:relative;padding:14px 14px 0}
-.browser .scroll-inner{display:grid;gap:10px;animation:mockScroll 9s linear infinite}
-@keyframes mockScroll{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
-.mock-row{height:24px;border-radius:8px;background:#eef2f6}
-.mock-row.w60{width:60%}.mock-row.w80{width:80%}.mock-row.w40{width:40%}
-.mock-chart{height:88px;border-radius:10px;background:var(--wash);display:flex;align-items:flex-end;gap:8px;padding:12px}
-.mock-chart i{flex:1;background:var(--accent);opacity:.18;border-radius:4px 4px 0 0}
-.mock-chart i:nth-child(1){height:44%}
-.mock-chart i:nth-child(2){height:68%}
-.mock-chart i:nth-child(3){height:52%}
-.mock-chart i:nth-child(4){height:82%}
-.mock-chart i:nth-child(5){height:60%}
-.mock-caption{position:absolute;bottom:10px;left:14px;font-size:11px;color:var(--faint)}
-@media (prefers-reduced-motion: reduce){.browser .scroll-inner{animation:none}}
+.browser .stage{position:relative;padding:0}
+.browser .stage img{width:100%;display:block;object-fit:cover;object-position:top left}
+@media (prefers-reduced-motion: reduce){.browser .stage img{animation:none}}
 .feature .info{padding:36px 32px;display:flex;flex-direction:column;justify-content:center}
 .feature .tag{display:inline-flex;align-self:flex-start;font-size:12px;color:var(--accent);background:var(--wash);border-radius:999px;padding:4px 12px;margin-bottom:16px}
 .feature h3{font-size:22px;font-weight:700;margin-bottom:10px;line-height:1.35}
@@ -163,7 +152,16 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 .t-card ul{margin-top:10px;display:grid;gap:8px;list-style:none}
 .t-card li{font-size:13.5px;color:var(--muted);padding-left:16px;position:relative}
 .t-card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.shot-banner{height:260px;border:1px dashed var(--line);border-radius:16px;background:var(--soft);display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;color:var(--faint);padding:0 32px;margin:20px 0}
+/* 项目截图图廊：主图通栏 + 副图双列 */
+.gallery{margin:24px 0;display:grid;gap:16px}
+.g-g-main{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px -20px rgba(16,30,50,.28)}
+.g-g-main img{width:100%;display:block}
+.g-g-sub{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g-g-item{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.g-g-item .g-img{overflow:hidden;background:var(--soft)}
+.g-g-item .g-img img{width:100%;display:block;object-fit:cover;object-position:top left;aspect-ratio:16/10}
+.g-g-cap{font-size:12.5px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);line-height:1.6}
+.g-note{font-size:12.5px;color:var(--faint);margin-top:-4px}
 .ver-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
 .ver-card{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}
 .ver-card .v{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;font-variant-numeric:tabular-nums}
@@ -181,8 +179,9 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
   .p-more{grid-template-columns:1fr}
   .method-grid{grid-template-columns:repeat(2,1fr)}
   .feature,.feature.flip{grid-template-columns:1fr}
-  .feature .shot,.feature.flip .shot{border-right:none;border-left:none;border-bottom:1px solid var(--line);min-height:280px}
+  .feature .shot,.feature.flip .shot{border-right:none;border-left:none;border-bottom:1px solid var(--line)}
   .about-grid{grid-template-columns:1fr}
+  .g-g-sub{grid-template-columns:1fr}
 }
 @media(max-width:640px){
   .method-grid{grid-template-columns:1fr}
@@ -368,13 +367,25 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 </div><!-- /home -->
 
 <!-- ===== 详情视图（JS 渲染） ===== -->
+<!-- 静态资源清单：九张脱敏截图在此以静态 src 落位，保证发布链路识别上传；页面展示由下方 JS 模板渲染 -->
+<div id="assetManifest" aria-hidden="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">
+  <img src="assets/shots/zhongtai-1-dashboard.png" alt="">
+  <img src="assets/shots/zhongtai-2-drilldown.png" alt="">
+  <img src="assets/shots/zhongtai-3-speedview.png" alt="">
+  <img src="assets/shots/intel-1-calendar.png" alt="">
+  <img src="assets/shots/intel-2-detail.png" alt="">
+  <img src="assets/shots/intel-3-filter.png" alt="">
+  <img src="assets/shots/knowledge-1-index.png" alt="">
+  <img src="assets/shots/knowledge-2-term.png" alt="">
+  <img src="assets/shots/knowledge-3-glossary.png" alt="">
+</div>
 <div id="detail" class="detail-view"></div>
 
 <script>
 /* ===== 项目数据（对外口径：内部精确数、竞对真名、敏感序列不出现） ===== */
 const CASES = {
   zhongtai: {
-    slug:"zhongtai", tag:"核心 · 数据工具", title:"区域经营数据分析中台", mock:"chart",
+    slug:"zhongtai", tag:"核心 · 数据工具", title:"区域经营数据分析中台",
     desc:"多主体经营数据整合、口径规则抽象、自动化管线与分层下钻可视化。",
     points:[
       {b:"痛点切入", s:"把结构各不固定的多类业务母表归集进同一底座，替代周期重复的人工拼表。"},
@@ -382,6 +393,13 @@ const CASES = {
       {b:"分层下钻", s:"同一底座输出大盘、速览、下钻三类视图，逐级钻到分部层级并回看历史日期。"}
     ],
     tools:["Python","pandas","ECharts","HTML / JS"],
+    shots:{
+      main:{src:"assets/shots/zhongtai-1-dashboard.png", cap:"经营诊断大盘：预警分级、核心指标与进度总览（脱敏样例）"},
+      sub:[
+        {src:"assets/shots/zhongtai-2-drilldown.png", cap:"地市下钻：逐级钻取到分部层级的业绩明细表"},
+        {src:"assets/shots/zhongtai-3-speedview.png", cap:"一线负责人速览：面向日常跟进的精简驾驶舱"}
+      ]
+    },
     eyebrow:"核心项目 · 2026.03 – 至今",
     title:"把多主体分散的经营数据，收敛成一条可追溯、可下钻的单一数据流。",
     lede:"面向管理层经营复盘与一线负责人指导的双重需求，从手工汇总痛点出发，完成口径规则设计、自动化数据管线与分层可视化落地。",
@@ -417,7 +435,7 @@ const CASES = {
     boundary:"本系统面向经营复盘与一线指导，不承担招生流程管理与在线交易；采集与加工范围限定在已授权的内部业务数据。实现脚本由 AI 协作生成，口径、非目标与验收标准由本人定义并把关；页面展示数据为脱敏样例，不包含真实地市、金额与人名。"
   },
   intel: {
-    slug:"intel", tag:"核心 · 情报系统", title:"公职考试情报聚合平台", mock:"list", flip:true,
+    slug:"intel", tag:"核心 · 情报系统", title:"公职考试情报聚合平台", flip:true,
     desc:"公开信息采集、密级分层与一线投喂闭环，辅助岗位筛选与时效提醒。",
     points:[
       {b:"合规优先", s:"公开来源采集与内部资料分层隔离，巡检规则定期复核，边界清晰。"},
@@ -425,6 +443,13 @@ const CASES = {
       {b:"投喂闭环", s:"一线回收新线索后补充规则库，平台随业务反馈持续更新。"}
     ],
     tools:["Python","采集脚本","HTML / JS","规则库"],
+    shots:{
+      main:{src:"assets/shots/intel-1-calendar.png", cap:"考试节奏日历：多类考试序列节点同框总览（脱敏样例）"},
+      sub:[
+        {src:"assets/shots/intel-2-detail.png", cap:"考情时间轴：按年份泳道组织的考试档案与节点标注"},
+        {src:"assets/shots/intel-3-filter.png", cap:"岗位筛选工具：条件筛选面板演示态，不展示真实职位"}
+      ]
+    },
     eyebrow:"核心项目 · 现职期间持续迭代",
     title:"把分散在各官方站点的考试信息，收敛成合规、分层、可直接转为动作的情报系统。",
     lede:"面向一线逐日检索公告的痛点，设计合规采集、结构化核验、密级分层与投喂闭环，并配套岗位筛选工具，让看到信息能够直接落到当日动作。",
@@ -460,7 +485,7 @@ const CASES = {
     boundary:"平台只采集无需登录的公开页面，被拦截站点转人工清单；竞对名称、价格与内部岗位信息仅留存于内部版本。采集脚本只负责发现新公告，不自动改写业务数据；页面为脱敏示意，不展示未公开岗位与机构明细。"
   },
   knowledge: {
-    slug:"knowledge", tag:"核心 · 知识系统", title:"个人知识沉淀系统", mock:"cards",
+    slug:"knowledge", tag:"核心 · 知识系统", title:"个人知识沉淀系统",
     desc:"素材三层结构化加工，一套数据多视图呈现，词条之间双向串联成网。",
     points:[
       {b:"三层加工", s:"提炼结论、结构化分节、原文归档并存，既能快速查阅也能回查出处。"},
@@ -468,6 +493,13 @@ const CASES = {
       {b:"串联织网", s:"相近概念互相链接，新素材自动补进既有卡片与问答，避免重复建条。"}
     ],
     tools:["原生 JS","结构化数据","HTML / CSS"],
+    shots:{
+      main:{src:"assets/shots/knowledge-1-index.png", cap:"卡片库首页：分类检索与结构化笔记卡片入口"},
+      sub:[
+        {src:"assets/shots/knowledge-2-term.png", cap:"术语深读页：定义、类比与上下游概念串联"},
+        {src:"assets/shots/knowledge-3-glossary.png", cap:"术语分类墙：百余词条按类别网格组织与速查"}
+      ]
+    },
     eyebrow:"核心项目 · 个人自研产品",
     title:"把散落的多平台素材，加工成可检索、可串联、可成体系阅读的知识网络。",
     lede:"面向素材分散、查找依赖回忆、跨领域知识点孤立的问题，设计本地运行的多视图知识管理系统，完成采集、三层结构化加工与双向织网。",
@@ -505,39 +537,12 @@ const CASES = {
 };
 const ORDER = ["zhongtai","intel","knowledge"];
 
-/* ===== 首页三排大卡渲染 ===== */
-function mockStage(type){
-  let inner = "";
-  if(type === "chart"){
-    inner = `
-      <div class="mock-row w60"></div>
-      <div class="mock-chart"><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="mock-row w80"></div><div class="mock-row w40"></div>
-      <div class="mock-row w80"></div><div class="mock-row w60"></div>
-      <div class="mock-row w60"></div>
-      <div class="mock-chart"><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="mock-row w80"></div><div class="mock-row w40"></div>
-      <div class="mock-row w80"></div><div class="mock-row w60"></div>`;
-  } else if(type === "cards"){
-    inner = `
-      <div class="mock-chart" style="height:64px"><i></i><i></i><i></i></div>
-      <div class="mock-row w60"></div><div class="mock-row w80"></div>
-      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>
-      <div class="mock-chart" style="height:64px"><i></i><i></i><i></i></div>
-      <div class="mock-row w60"></div><div class="mock-row w80"></div>
-      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>`;
-  } else {
-    inner = `
-      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>
-      <div class="mock-row w80"></div><div class="mock-row w40"></div>
-      <div class="mock-row w60"></div><div class="mock-row w80"></div>
-      <div class="mock-row w40"></div><div class="mock-row w80"></div><div class="mock-row w60"></div>
-      <div class="mock-row w80"></div><div class="mock-row w40"></div>
-      <div class="mock-row w60"></div><div class="mock-row w80"></div>`;
-  }
+/* ===== 首页三排大卡：主截图浏览器框 ===== */
+function mainShot(c){
+  const m = c.shots.main;
   return `<div class="browser">
     <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="addr"></span></div>
-    <div class="stage"><div class="scroll-inner">${inner}</div><div class="mock-caption">界面演示位 · 后续替换为脱敏录屏与截图</div></div>
+    <div class="stage"><img src="${m.src}" alt="${c.title}界面主截图" loading="lazy"></div>
   </div>`;
 }
 
@@ -555,7 +560,7 @@ function renderFeatures(){
         <div class="tools">${c.tools.map(t=>`<span class="tool">${t}</span>`).join("")}</div>
         <span class="go">查看案例详情 →</span>
       </div>`;
-    const shot = `<div class="shot">${mockStage(c.mock)}</div>`;
+    const shot = `<div class="shot">${mainShot(c)}</div>`;
     return `<a class="${cls}" href="#/case-${c.slug}">${c.flip ? info + shot : shot + info}</a>`;
   }).join("");
 }
@@ -579,7 +584,11 @@ function renderCase(key){
     <div class="meta-grid">${c.meta.map(m=>`<div class="meta-card"><div class="k">${m.k}</div><div class="v">${m.v}</div></div>`).join("")}</div>
     <div class="stat-grid">${c.stats.map(s=>`<div class="stat-card"><div class="num">${s.num}<small>${s.unit}</small></div><div class="lab">${s.lab}</div><div class="desc">${s.desc}</div></div>`).join("")}</div>
     <div class="three-col">${c.cols.map(t=>`<div class="t-card"><span class="tag">${t.tag}</span><h5>${t.h}</h5><p>${t.p}</p><ul>${t.li.map(x=>`<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>
-    <div class="shot-banner">界面截图与脱敏录屏位 · 第二批素材接入后替换</div>
+    <div class="gallery">
+      <div class="g-g-main"><img src="${c.shots.main.src}" alt="${c.title}主界面截图" loading="lazy"></div>
+      <div class="g-g-sub">${c.shots.sub.map(s=>`<div class="g-g-item"><div class="g-img"><img src="${s.src}" alt="${c.title}界面截图" loading="lazy"></div><div class="g-g-cap">${s.cap}</div></div>`).join("")}</div>
+      <div class="g-note">以下界面均为脱敏演示样例，地名、金额与人名已替换为虚拟样例。</div>
+    </div>
     <div class="ver-grid">${c.versions.map(v=>`<div class="ver-card"><div class="v">${v.v}</div><h5>${v.h}</h5><p>${v.p}</p></div>`).join("")}</div>
     <div class="boundary"><h5>取舍与边界</h5><p>${c.boundary}</p></div>
     <div class="case-nav">
