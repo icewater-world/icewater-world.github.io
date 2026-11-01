@@ -165,6 +165,11 @@ footer .fname{font-size:15px;color:var(--ink);margin-bottom:8px;font-weight:700}
 .g-g-item .g-img img{width:100%;display:block;object-fit:cover;object-position:top left;aspect-ratio:16/10}
 .g-g-cap{font-size:12.5px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);line-height:1.6}
 .g-note{font-size:12.5px;color:var(--faint);margin-top:-4px}
+/* 操作闭环 GIF：通栏证据载体，与图廊同一卡片语言 */
+.gif-row{margin:24px 0}
+.gif-frame{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 12px 30px -20px rgba(16,30,50,.28)}
+.gif-frame img{width:100%;display:block;background:var(--soft)}
+.gif-cap{font-size:12.5px;color:var(--muted);padding:10px 14px;border-top:1px solid var(--line);line-height:1.6}
 .ver-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
 .ver-card{border:1px solid var(--line);border-radius:16px;padding:22px;background:#fff}
 .ver-card .v{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;font-variant-numeric:tabular-nums}
@@ -434,6 +439,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-off
   <img src="assets/shots/knowledge-1-index.png" alt="">
   <img src="assets/shots/knowledge-2-term.png" alt="">
   <img src="assets/shots/knowledge-3-glossary.png" alt="">
+  <img src="assets/gifs/zhongtai-1.gif" alt="">
+  <img src="assets/gifs/intel-1.gif" alt="">
+  <img src="assets/gifs/knowledge-1.gif" alt="">
 </div>
 <div id="detail" class="detail-view"></div>
 
@@ -456,6 +464,7 @@ const CASES = {
         {src:"assets/shots/zhongtai-3-speedview.png", cap:"一线负责人速览：面向日常跟进的精简驾驶舱"}
       ]
     },
+    gif:{src:"assets/gifs/zhongtai-1.gif", cap:"操作闭环：概览大盘 → 地市详情 → 选地市 → 分部明细表下钻（脱敏样例）"},
     eyebrow:"核心项目 · 2026.03 – 至今",
     title:"把多主体分散的经营数据，收敛成一条可追溯、可下钻的单一数据流。",
     lede:"面向管理层经营复盘与一线负责人指导的双重需求，从手工汇总痛点出发，完成口径规则设计、自动化数据管线与分层可视化落地。",
@@ -506,6 +515,7 @@ const CASES = {
         {src:"assets/shots/intel-3-filter.png", cap:"岗位筛选工具：条件筛选面板演示态，不展示真实职位"}
       ]
     },
+    gif:{src:"assets/gifs/intel-1.gif", cap:"操作闭环：考试节奏日历 → 考情资料库 → 来源与方法三视图切换（脱敏样例）"},
     eyebrow:"核心项目 · 现职期间持续迭代",
     title:"把分散在各官方站点的考试信息，收敛成合规、分层、可直接转为动作的情报系统。",
     lede:"面向一线逐日检索公告的痛点，设计合规采集、结构化核验、密级分层与投喂闭环，并配套岗位筛选工具，让看到信息能够直接落到当日动作。",
@@ -556,6 +566,7 @@ const CASES = {
         {src:"assets/shots/knowledge-3-glossary.png", cap:"术语分类墙：百余词条按类别网格组织与速查"}
       ]
     },
+    gif:{src:"assets/gifs/knowledge-1.gif", cap:"操作闭环：术语墙 → LLM 深读 → 相关词跳转 Token，词条双向织网（脱敏样例）"},
     eyebrow:"核心项目 · 个人自研产品",
     title:"把散落的多平台素材，加工成可检索、可串联、可成体系阅读的知识网络。",
     lede:"面向素材分散、查找依赖回忆、跨领域知识点孤立的问题，设计本地运行的多视图知识管理系统，完成采集、三层结构化加工与双向织网。",
@@ -710,6 +721,7 @@ function renderCase(key){
       <div class="g-g-sub">${c.shots.sub.map(s=>`<div class="g-g-item"><div class="g-img"><img src="${s.src}" alt="${c.title}界面截图" loading="lazy"></div><div class="g-g-cap">${s.cap}</div></div>`).join("")}</div>
       <div class="g-note">以下界面均为脱敏演示样例，地名、金额与人名已替换为虚拟样例。</div>
     </div>
+    ${c.gif ? `<div class="gif-row rv"><div class="gif-frame"><img src="${c.gif.src}" alt="${c.title}操作闭环演示" loading="lazy"><div class="gif-cap">${c.gif.cap}</div></div></div>` : ""}
     <div class="ver-grid rv">${c.versions.map(v=>`<div class="ver-card"><div class="v">${v.v}</div><h5>${v.h}</h5><p>${v.p}</p></div>`).join("")}</div>
     <div class="boundary rv"><h5>取舍与边界</h5><p>${c.boundary}</p></div>
     <div class="case-nav rv">
@@ -776,7 +788,7 @@ function observeDetail(){
   if(detailIO) detailIO.disconnect();
   detailIO = makeRevealIO();
   // 仅滚动组进入视口再触发；首屏块由 route() 双帧直接补 .in
-  document.querySelectorAll("#detail .three-col,#detail .gallery,#detail .ver-grid,#detail .boundary,#detail .case-nav")
+  document.querySelectorAll("#detail .three-col,#detail .gallery,#detail .gif-row,#detail .ver-grid,#detail .boundary,#detail .case-nav")
     .forEach(el=>detailIO.observe(el));
   if(flowIO) flowIO.disconnect();
   flowIO = new IntersectionObserver(entries=>{
